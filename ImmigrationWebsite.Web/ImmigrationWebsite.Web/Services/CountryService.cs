@@ -1,0 +1,52 @@
+﻿using ImmigrationWebsite.Web.Data;
+using ImmigrationWebsite.Web.Models;
+using ImmigrationWebsite.Web.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
+
+namespace ImmigrationWebsite.Web.Services
+{
+    public class CountryService : ICountryService
+    {
+        private readonly ApplicationDbContext _context;
+
+        public CountryService(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+        public async Task<List<Country>> GetAllAsync()
+        {
+            return await _context.Countries
+                .ToListAsync();
+        }
+
+        public async Task<Country?> GetByIdAsync(int id)
+        {
+            return await _context.Countries
+                .FirstOrDefaultAsync(x => x.Id == id);
+        }
+
+        public async Task AddAsync(Country country)
+        {
+            _context.Countries.Add(country);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task UpdateAsync(Country country)
+        {
+            _context.Countries.Update(country);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteAsync(int id)
+        {
+            var country = await GetByIdAsync(id);
+
+            if (country == null)
+                return;
+
+            _context.Countries.Remove(country);
+            await _context.SaveChangesAsync();
+        }
+    }
+}

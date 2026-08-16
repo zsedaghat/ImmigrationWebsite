@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+
+    <title>
+        @ViewData["Title"] - Immigration Admin
+    </title>
+
+    <link rel="stylesheet"
+          href="~/admin/css/adminlte.css" />
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+@* 
+    <link rel="stylesheet"
+          href="~/admin/css/bootstrap-icons.min.css" /> *@
+</head>
+
+<body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
+
+    <div class="app-wrapper">
+
+        <!-- Navbar -->
+        <nav class="app-header navbar navbar-expand bg-body">
+            <div class="container-fluid">
+
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           data-lte-toggle="sidebar"
+                           href="#">
+                            <i class="bi bi-list"></i>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="/"
+                           class="nav-link">
+                            View Website
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+
+
+        <!-- Sidebar -->
+        <aside class="app-sidebar bg-body-secondary shadow"
+               data-bs-theme="dark">
+
+            <div class="sidebar-brand">
+                <a href="/Admin/Dashboard"
+                   class="brand-link">
+
+                    <span class="brand-text fw-light">
+                        Immigration Admin
+                    </span>
+
+                </a>
+            </div>
+
+            <div class="sidebar-wrapper">
+
+                <nav class="mt-2">
+
+                    <ul class="nav sidebar-menu flex-column"
+                        data-lte-toggle="treeview"
+                        role="menu">
+
+                        <li class="nav-item">
+                            <a href="/Admin/Dashboard"
+                               class="nav-link">
+
+                                <i class="nav-icon bi bi-speedometer"></i>
+
+                                <p>
+                                    Dashboard
+                                </p>
+
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="/Admin/Countries"
+                               class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Countries" ? "active" : "")">
+
+                                <i class="nav-icon bi bi-globe"></i>
+
+                                <p>
+                                    Countries
+                                </p>
+
+                            </a>
+                        </li>
+
+
+                        <li class="nav-item">
+                            <a href="#"
+                               class="nav-link">
+
+                                <i class="nav-icon bi bi-briefcase"></i>
+
+                                <p>
+                                    Services
+                                </p>
+
+                            </a>
+                        </li>
+
+
+                        <li class="nav-item">
+                            <a href="#"
+                               class="nav-link">
+
+                                <i class="nav-icon bi bi-file-text"></i>
+
+                                <p>
+                                    Blog Posts
+                                </p>
+
+                            </a>
+                        </li>
+
+
+                        <li class="nav-item">
+                            <a href="#"
+                               class="nav-link">
+
+                                <i class="nav-icon bi bi-chat-left-text"></i>
+
+                                <p>
+                                    Consultation Requests
+                                </p>
+
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </nav>
+
+            </div>
+
+        </aside>
+
+
+        <!-- Main Content -->
+        <main class="app-main">
+
+            <div class="app-content">
+
+                <div class="container-fluid">
+
+                    @RenderBody()
+
+                </div>
+
+            </div>
+
+        </main>
+
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <strong>
+                Immigration Website
+            </strong>
+
+            <span>
+                Admin Panel
+            </span>
+        </footer>
+
+    </div>
+
+
+
+
+    <script src="~/admin/js/adminlte.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

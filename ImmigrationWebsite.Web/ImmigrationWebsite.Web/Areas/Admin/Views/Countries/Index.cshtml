@@ -1,0 +1,149 @@
+﻿@model List<ImmigrationWebsite.Web.Models.Country>
+
+@{
+    ViewData["Title"] = "Countries";
+}
+
+<div class="card">
+
+    <div class="card-header">
+
+        <div class="d-flex justify-content-between align-items-center w-100">
+
+            <h3 class="card-title mb-0">
+                Countries
+            </h3>
+
+            <a href="/Admin/Countries/Create"
+               class="btn btn-primary btn-sm">
+                <i class="bi bi-plus-lg"></i>
+                Add Country
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="card-body">
+
+        @if (!Model.Any())
+        {
+            <p>No countries found.</p>
+        }
+        else
+        {
+            <table class="table table-bordered table-striped">
+
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th style="width: 280px;">
+                            Description
+                        </th>
+                        <th>Image</th>
+                        <th>Status</th>
+                        <th>Display Order</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    @foreach (var country in Model)
+                    {
+                        <tr>
+                            <td>
+                                @country.Id
+                            </td>
+
+                            <td>
+                                @country.Name
+                            </td>
+
+                            <td style="width: 280px; max-width: 280px;">
+                                <div class="text-truncate"
+                                     style="max-width: 280px;"
+                                     title="@country.Description">
+
+                                    @country.Description
+
+                                </div>
+                            </td>
+
+                            <td>
+                                @if (!string.IsNullOrEmpty(country.ImageUrl))
+                                {
+                                    <img src="@country.ImageUrl"
+                                         alt="@country.Name"
+                                         style="width: 80px; height: 50px; object-fit: cover;" />
+                                }
+                                else
+                                {
+                                    <span>No image</span>
+                                }
+                            </td>
+
+                            <td>
+                                @if (country.IsActive)
+                                {
+                                    <span class="badge text-bg-success">
+                                        Active
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="badge text-bg-danger">
+                                        Inactive
+                                    </span>
+                                }
+                            </td>
+
+                            <td>
+                                @country.DisplayOrder
+                            </td>
+                            <td class="text-center">
+
+                                <a asp-area="Admin"
+                                   asp-controller="Countries"
+                                   asp-action="Edit"
+                                   asp-route-id="@country.Id"
+                                   class="btn btn-sm btn-link text-primary p-1"
+                                   title="Edit">
+
+                                    <i class="bi bi-pencil"></i>
+
+                                </a>
+
+                                <form asp-area="Admin"
+                                      asp-controller="Countries"
+                                      asp-action="Delete"
+                                      asp-route-id="@country.Id"
+                                      method="post"
+                                      class="d-inline">
+
+                                    @Html.AntiForgeryToken()
+
+                                    <button type="submit"
+                                            class="btn btn-sm btn-link text-danger p-1"
+                                            title="Delete"
+                                            onclick="return confirm('Are you sure you want to delete this country?');">
+
+                                        <i class="bi bi-trash"></i>
+
+                                    </button>
+
+                                </form>
+
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+        }
+
+    </div>
+
+</div>

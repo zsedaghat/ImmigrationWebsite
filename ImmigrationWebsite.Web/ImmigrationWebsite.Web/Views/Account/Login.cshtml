@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Admin Login";
+}
+
+<h2>Admin Login</h2>
+
+<form asp-controller="Account"
+      asp-action="Login"
+      method="post">
+
+    @Html.AntiForgeryToken()
+
+    <div>
+        <label>Email</label>
+        <input type="email"
+               name="email"
+               required />
+    </div>
+
+    <br />
+
+    <div>
+        <label>Password</label>
+        <input type="password"
+               name="password"
+               required />
+    </div>
+
+    <br />
+
+    <button type="submit">
+        Login
+    </button>
+
+</form>
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <div>
+        @foreach (var error in ViewData.ModelState.Values
+            .SelectMany(v => v.Errors))
+        {
+            <p>@error.ErrorMessage</p>
+        }
+    </div>
+}
