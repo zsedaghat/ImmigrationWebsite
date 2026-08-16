@@ -1,5 +1,6 @@
 ﻿using ImmigrationWebsite.Web.Data;
 using ImmigrationWebsite.Web.Models;
+using ImmigrationWebsite.Web.Models.Pagination;
 using ImmigrationWebsite.Web.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,11 +15,29 @@ public class ConsultationRequestManager : IConsultationRequestManager
         _context = context;
     }
 
-    public async Task<List<ConsultationRequest>> GetAllAsync()
+    public async Task<PagedResult<ConsultationRequest>> GetPagedAsync(
+        int pageNumber,
+        int pageSize)
     {
-        return await _context.ConsultationRequests
+        var query = _context.ConsultationRequests
+            .AsNoTracking()
             .OrderByDescending(x => x.CreatedAt)
+            .ThenByDescending(x => x.Id);
+
+        var totalItems = await query.CountAsync();
+
+        var items = await query
+            .Skip((pageNumber - 1) * pageSize)
+            .Take(pageSize)
             .ToListAsync();
+
+        return new PagedResult<ConsultationRequest>
+        {
+            Items = items,
+            PageNumber = pageNumber,
+            PageSize = pageSize,
+            TotalItems = totalItems
+        };
     }
 
     public async Task<ConsultationRequest?> GetByIdAsync(int id)
@@ -44,6 +63,13 @@ public class ConsultationRequestManager : IConsultationRequestManager
             return;
 
         _context.ConsultationRequests.Remove(request);
+
+        await _context.SaveChangesAsync();
+    }
+
+    public async Task UpdateAsync(ConsultationRequest request)
+    {
+        _context.ConsultationRequests.Update(request);
 
         await _context.SaveChangesAsync();
     }

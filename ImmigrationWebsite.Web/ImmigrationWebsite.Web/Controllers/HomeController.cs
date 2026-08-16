@@ -34,9 +34,11 @@ namespace ImmigrationWebsite.Web.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Countries()
+        public async Task<IActionResult> Countries(int page = 1,
+         int pageSize = 10)
         {
-            var countries = await _countryService.GetAllAsync();
+            var countries = await _countryService.GetPagedAsync(page,
+                pageSize);
 
             return View(countries);
         }

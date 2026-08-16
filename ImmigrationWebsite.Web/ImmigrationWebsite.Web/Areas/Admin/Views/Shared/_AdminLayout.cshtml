@@ -98,12 +98,11 @@
                             </a>
                         </li>
 
-
                         <li class="nav-item">
-                            <a href="#"
-                               class="nav-link">
+                            <a href="/Admin/Services"
+                               class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Services" ? "active" : "")">
 
-                                <i class="nav-icon bi bi-briefcase"></i>
+                                <i class="nav-icon bi bi-globe"></i>
 
                                 <p>
                                     Services
@@ -112,12 +111,11 @@
                             </a>
                         </li>
 
-
                         <li class="nav-item">
-                            <a href="#"
-                               class="nav-link">
+                            <a href="/Admin/BlogPosts"
+                               class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "BlogPosts" ? "active" : "")">
 
-                                <i class="nav-icon bi bi-file-text"></i>
+                                <i class="nav-icon bi bi-globe"></i>
 
                                 <p>
                                     Blog Posts
@@ -126,12 +124,11 @@
                             </a>
                         </li>
 
-
                         <li class="nav-item">
-                            <a href="#"
-                               class="nav-link">
+                            <a href="/Admin/ConsultationRequests"
+                               class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "ConsultationRequests" ? "active" : "")">
 
-                                <i class="nav-icon bi bi-chat-left-text"></i>
+                                <i class="nav-icon bi bi-globe"></i>
 
                                 <p>
                                     Consultation Requests
@@ -139,7 +136,8 @@
 
                             </a>
                         </li>
-
+                    
+                       
                     </ul>
 
                 </nav>

@@ -16,9 +16,10 @@ public class ServiceController : Controller
     }
 
     // GET: /Service
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index(int page = 1,
+          int pageSize = 10)
     {
-        var services = await _serviceManager.GetAllAsync();
+        var services = await _serviceManager.GetPagedAsync(page,pageSize);
 
         return View(services);
     }

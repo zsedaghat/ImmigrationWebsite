@@ -1,5 +1,6 @@
 ﻿using ImmigrationWebsite.Web.Data;
 using ImmigrationWebsite.Web.Models;
+using ImmigrationWebsite.Web.Models.Pagination;
 using ImmigrationWebsite.Web.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,10 +15,29 @@ namespace ImmigrationWebsite.Web.Services
             _context = context;
         }
 
-        public async Task<List<Country>> GetAllAsync()
+        public async Task<PagedResult<Country>> GetPagedAsync(
+        int pageNumber,
+        int pageSize)
         {
-            return await _context.Countries
+            var query = _context.Countries
+                .AsNoTracking()
+                .OrderBy(x => x.DisplayOrder)
+                .ThenBy(x => x.Id);
+
+            var totalItems = await query.CountAsync();
+
+            var items = await query
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
                 .ToListAsync();
+
+            return new PagedResult<Country>
+            {
+                Items = items,
+                PageNumber = pageNumber,
+                PageSize = pageSize,
+                TotalItems = totalItems
+            };
         }
 
         public async Task<Country?> GetByIdAsync(int id)

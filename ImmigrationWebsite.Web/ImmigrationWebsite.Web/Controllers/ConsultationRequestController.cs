@@ -17,9 +17,10 @@ public class ConsultationRequestController : Controller
     }
 
     // GET: /ConsultationRequest
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index(int page = 1,
+        int pageSize = 10)
     {
-        var requests = await _requestManager.GetAllAsync();
+        var requests = await _requestManager.GetPagedAsync(page,pageSize);
 
         return View(requests);
     }

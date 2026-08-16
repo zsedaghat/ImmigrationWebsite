@@ -1,7 +1,7 @@
-﻿@model ImmigrationWebsite.Web.Models.Pagination.PagedResult<ImmigrationWebsite.Web.Models.Country>
+﻿@model ImmigrationWebsite.Web.Models.Pagination.PagedResult<ImmigrationWebsite.Web.Models.Service>
 
 @{
-    ViewData["Title"] = "Countries";
+    ViewData["Title"] = "Services";
 }
 
 <div class="card">
@@ -11,13 +11,13 @@
         <div class="d-flex justify-content-between align-items-center w-100">
 
             <h3 class="card-title mb-0">
-                Countries
+                Services
             </h3>
 
-            <a href="/Admin/Countries/Create"
+            <a href="/Admin/Services/Create"
                class="btn btn-primary btn-sm">
                 <i class="bi bi-plus-lg"></i>
-                Add Country
+                Add Service
             </a>
 
         </div>
@@ -28,7 +28,7 @@
 
         @if (!Model.Items.Any())
         {
-            <p>No countries found.</p>
+            <p>No services found.</p>
         }
         else
         {
@@ -37,55 +37,71 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Name</th>
+
+                        <th>Title</th>
+
                         <th style="width: 280px;">
                             Description
                         </th>
+
                         <th>Image</th>
+
                         <th>Status</th>
+
                         <th>Display Order</th>
-                        <th class="text-center">Actions</th>
+
+                        <th class="text-center">
+                            Actions
+                        </th>
                     </tr>
                 </thead>
 
                 <tbody>
 
-                    @foreach (var country in Model.Items)
+                    @foreach (var service in Model.Items)
                     {
                         <tr>
+
                             <td>
-                                @country.Id
+                                @service.Id
                             </td>
 
                             <td>
-                                @country.Name
+                                @service.Title
                             </td>
 
                             <td style="width: 280px; max-width: 280px;">
+
                                 <div class="text-truncate"
                                      style="max-width: 280px;"
-                                     title="@country.Description">
+                                     title="@service.Description">
 
-                                    @country.Description
+                                    @service.Description
 
                                 </div>
+
                             </td>
 
                             <td>
-                                @if (!string.IsNullOrEmpty(country.ImageUrl))
+
+                                @if (!string.IsNullOrEmpty(service.ImageUrl))
                                 {
-                                    <img src="@country.ImageUrl"
-                                         alt="@country.Name"
-                                         style="width: 80px; height: 50px; object-fit: cover;" />
+                                    <img src="@service.ImageUrl"
+                                         alt="@service.Title"
+                                         style="width: 80px;
+                                                            height: 50px;
+                                                            object-fit: cover;" />
                                 }
                                 else
                                 {
                                     <span>No image</span>
                                 }
+
                             </td>
 
                             <td>
-                                @if (country.IsActive)
+
+                                @if (service.IsActive)
                                 {
                                     <span class="badge text-bg-success">
                                         Active
@@ -97,17 +113,21 @@
                                         Inactive
                                     </span>
                                 }
+
                             </td>
 
                             <td>
-                                @country.DisplayOrder
+                                @service.DisplayOrder
                             </td>
+
                             <td class="text-center">
 
+                                <!-- Edit -->
+
                                 <a asp-area="Admin"
-                                   asp-controller="Countries"
+                                   asp-controller="Services"
                                    asp-action="Edit"
-                                   asp-route-id="@country.Id"
+                                   asp-route-id="@service.Id"
                                    class="btn btn-sm btn-link text-primary p-1"
                                    title="Edit">
 
@@ -115,10 +135,13 @@
 
                                 </a>
 
+
+                                <!-- Delete -->
+
                                 <form asp-area="Admin"
-                                      asp-controller="Countries"
+                                      asp-controller="Services"
                                       asp-action="Delete"
-                                      asp-route-id="@country.Id"
+                                      asp-route-id="@service.Id"
                                       method="post"
                                       class="d-inline">
 
@@ -127,7 +150,7 @@
                                     <button type="submit"
                                             class="btn btn-sm btn-link text-danger p-1"
                                             title="Delete"
-                                            onclick="return confirm('Are you sure you want to delete this country?');">
+                                            onclick="return confirm('Are you sure you want to delete this service?');">
 
                                         <i class="bi bi-trash"></i>
 
@@ -136,6 +159,7 @@
                                 </form>
 
                             </td>
+
                         </tr>
                     }
 
@@ -145,13 +169,13 @@
 
             @if (Model.TotalPages > 1)
             {
-                <nav aria-label="Countries pagination">
+                <nav aria-label="Services pagination">
                     <ul class="pagination justify-content-center mt-4">
 
                         <li class="page-item @(Model.HasPreviousPage ? "" : "disabled")">
                             <a class="page-link"
                                asp-area="Admin"
-                               asp-controller="Countries"
+                               asp-controller="Services"
                                asp-action="Index"
                                asp-route-page="@(Model.PageNumber - 1)">
                                 Previous
@@ -163,7 +187,7 @@
                             <li class="page-item @(i == Model.PageNumber ? "active" : "")">
                                 <a class="page-link"
                                    asp-area="Admin"
-                                   asp-controller="Countries"
+                                   asp-controller="Services"
                                    asp-action="Index"
                                    asp-route-page="@i">
                                     @i
@@ -174,7 +198,7 @@
                         <li class="page-item @(Model.HasNextPage ? "" : "disabled")">
                             <a class="page-link"
                                asp-area="Admin"
-                               asp-controller="Countries"
+                               asp-controller="Services"
                                asp-action="Index"
                                asp-route-page="@(Model.PageNumber + 1)">
                                 Next
@@ -184,8 +208,6 @@
                     </ul>
                 </nav>
             }
-
-
         }
 
     </div>

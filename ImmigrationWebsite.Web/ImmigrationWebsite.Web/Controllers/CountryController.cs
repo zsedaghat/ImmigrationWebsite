@@ -15,9 +15,13 @@ namespace ImmigrationWebsite.Web.Controllers
             _countryService = countryService;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(
+         int page = 1,
+         int pageSize = 10)
         {
-            var countries = await _countryService.GetAllAsync();
+            var countries = await _countryService.GetPagedAsync(
+                page,
+                pageSize);
 
             return View(countries);
         }

@@ -16,9 +16,10 @@ public class BlogPostController : Controller
     }
 
     // GET: /BlogPost
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index(int page = 1,
+      int pageSize = 10)
     {
-        var posts = await _blogPostManager.GetAllAsync();
+        var posts = await _blogPostManager.GetPagedAsync(page,pageSize);
 
         return View(posts);
     }

@@ -1,7 +1,7 @@
-﻿@model ImmigrationWebsite.Web.Models.Pagination.PagedResult<ImmigrationWebsite.Web.Models.Country>
+﻿@model ImmigrationWebsite.Web.Models.Pagination.PagedResult<ImmigrationWebsite.Web.Models.BlogPost>
 
 @{
-    ViewData["Title"] = "Countries";
+    ViewData["Title"] = "Blog Posts";
 }
 
 <div class="card">
@@ -11,13 +11,15 @@
         <div class="d-flex justify-content-between align-items-center w-100">
 
             <h3 class="card-title mb-0">
-                Countries
+                Blog Posts
             </h3>
 
-            <a href="/Admin/Countries/Create"
+            <a href="/Admin/BlogPosts/Create"
                class="btn btn-primary btn-sm">
+
                 <i class="bi bi-plus-lg"></i>
-                Add Country
+                Add Blog Post
+
             </a>
 
         </div>
@@ -28,7 +30,7 @@
 
         @if (!Model.Items.Any())
         {
-            <p>No countries found.</p>
+            <p>No blog posts found.</p>
         }
         else
         {
@@ -36,78 +38,100 @@
 
                 <thead>
                     <tr>
+
                         <th>ID</th>
-                        <th>Name</th>
+
+                        <th>Title</th>
+
                         <th style="width: 280px;">
-                            Description
+                            Summary
                         </th>
+
                         <th>Image</th>
+
+                        <th>Published At</th>
+
                         <th>Status</th>
-                        <th>Display Order</th>
-                        <th class="text-center">Actions</th>
+
+                        <th class="text-center">
+                            Actions
+                        </th>
+
                     </tr>
                 </thead>
 
                 <tbody>
 
-                    @foreach (var country in Model.Items)
+                    @foreach (var post in Model.Items)
                     {
                         <tr>
+
                             <td>
-                                @country.Id
+                                @post.Id
                             </td>
 
                             <td>
-                                @country.Name
+                                @post.Title
                             </td>
 
                             <td style="width: 280px; max-width: 280px;">
+
                                 <div class="text-truncate"
                                      style="max-width: 280px;"
-                                     title="@country.Description">
+                                     title="@post.Summary">
 
-                                    @country.Description
+                                    @post.Summary
 
                                 </div>
+
                             </td>
 
                             <td>
-                                @if (!string.IsNullOrEmpty(country.ImageUrl))
+
+                                @if (!string.IsNullOrEmpty(post.ImageUrl))
                                 {
-                                    <img src="@country.ImageUrl"
-                                         alt="@country.Name"
-                                         style="width: 80px; height: 50px; object-fit: cover;" />
+                                    <img src="@post.ImageUrl"
+                                         alt="@post.Title"
+                                         style="width: 80px;
+                                                            height: 50px;
+                                                            object-fit: cover;" />
                                 }
                                 else
                                 {
                                     <span>No image</span>
                                 }
+
                             </td>
 
                             <td>
-                                @if (country.IsActive)
+                                @post.PublishedAt.ToString("yyyy/MM/dd")
+                            </td>
+
+                            <td>
+
+                                @if (post.IsPublished)
                                 {
                                     <span class="badge text-bg-success">
-                                        Active
+                                        Published
                                     </span>
                                 }
                                 else
                                 {
                                     <span class="badge text-bg-danger">
-                                        Inactive
+                                        Draft
                                     </span>
                                 }
+
                             </td>
 
-                            <td>
-                                @country.DisplayOrder
-                            </td>
                             <td class="text-center">
 
+                                <!-- Edit -->
+
                                 <a asp-area="Admin"
-                                   asp-controller="Countries"
+                                   asp-controller="BlogPosts"
                                    asp-action="Edit"
-                                   asp-route-id="@country.Id"
+                                   asp-route-id="@post.Id"
                                    class="btn btn-sm btn-link text-primary p-1"
                                    title="Edit">
 
@@ -115,10 +139,13 @@
 
                                 </a>
 
+
+                                <!-- Delete -->
+
                                 <form asp-area="Admin"
-                                      asp-controller="Countries"
+                                      asp-controller="BlogPosts"
                                       asp-action="Delete"
-                                      asp-route-id="@country.Id"
+                                      asp-route-id="@post.Id"
                                       method="post"
                                       class="d-inline">
 
@@ -127,7 +154,7 @@
                                     <button type="submit"
                                             class="btn btn-sm btn-link text-danger p-1"
                                             title="Delete"
-                                            onclick="return confirm('Are you sure you want to delete this country?');">
+                                            onclick="return confirm('Are you sure you want to delete this blog post?');">
 
                                         <i class="bi bi-trash"></i>
 
@@ -136,6 +163,7 @@
                                 </form>
 
                             </td>
+
                         </tr>
                     }
 
@@ -145,13 +173,13 @@
 
             @if (Model.TotalPages > 1)
             {
-                <nav aria-label="Countries pagination">
+                <nav aria-label="Blog posts pagination">
                     <ul class="pagination justify-content-center mt-4">
 
                         <li class="page-item @(Model.HasPreviousPage ? "" : "disabled")">
                             <a class="page-link"
                                asp-area="Admin"
-                               asp-controller="Countries"
+                               asp-controller="BlogPosts"
                                asp-action="Index"
                                asp-route-page="@(Model.PageNumber - 1)">
                                 Previous
@@ -163,7 +191,7 @@
                             <li class="page-item @(i == Model.PageNumber ? "active" : "")">
                                 <a class="page-link"
                                    asp-area="Admin"
-                                   asp-controller="Countries"
+                                   asp-controller="BlogPosts"
                                    asp-action="Index"
                                    asp-route-page="@i">
                                     @i
@@ -174,7 +202,7 @@
                         <li class="page-item @(Model.HasNextPage ? "" : "disabled")">
                             <a class="page-link"
                                asp-area="Admin"
-                               asp-controller="Countries"
+                               asp-controller="BlogPosts"
                                asp-action="Index"
                                asp-route-page="@(Model.PageNumber + 1)">
                                 Next
@@ -184,8 +212,6 @@
                     </ul>
                 </nav>
             }
-
-
         }
 
     </div>
