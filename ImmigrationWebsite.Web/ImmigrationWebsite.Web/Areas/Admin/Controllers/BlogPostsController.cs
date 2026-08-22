@@ -1,10 +1,12 @@
 ﻿using ImmigrationWebsite.Web.Models;
 using ImmigrationWebsite.Web.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ImmigrationWebsite.Web.Areas.Admin.Controllers;
 
 [Area("Admin")]
+[Authorize(Roles = "Admin")]
 public class BlogPostsController : Controller
 {
     private readonly IBlogPostManager _blogPostManager;
@@ -14,10 +16,9 @@ public class BlogPostsController : Controller
         _blogPostManager = blogPostManager;
     }
 
-    // GET: /Admin/BlogPosts
     public async Task<IActionResult> Index(
-      int page = 1,
-      int pageSize = 10)
+        int page = 1,
+        int pageSize = 10)
     {
         var posts = await _blogPostManager.GetPagedAsync(
             page,
@@ -26,14 +27,12 @@ public class BlogPostsController : Controller
         return View(posts);
     }
 
-    // GET: /Admin/BlogPosts/Create
     [HttpGet]
     public IActionResult Create()
     {
         return View();
     }
 
-    // POST: /Admin/BlogPosts/Create
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(
@@ -47,11 +46,11 @@ public class BlogPostsController : Controller
         {
             var uploadsFolder = Path.Combine(
                 Directory.GetCurrentDirectory(),
-                "wwwroot/uploads/blog"
-            );
+                "wwwroot",
+                "uploads",
+                "blog");
 
-            if (!Directory.Exists(uploadsFolder))
-                Directory.CreateDirectory(uploadsFolder);
+            Directory.CreateDirectory(uploadsFolder);
 
             var fileName =
                 Guid.NewGuid() +
@@ -59,12 +58,11 @@ public class BlogPostsController : Controller
 
             var filePath = Path.Combine(
                 uploadsFolder,
-                fileName
-            );
+                fileName);
 
             using (var stream = new FileStream(
-                       filePath,
-                       FileMode.Create))
+                filePath,
+                FileMode.Create))
             {
                 await image.CopyToAsync(stream);
             }
@@ -83,7 +81,6 @@ public class BlogPostsController : Controller
         return RedirectToAction(nameof(Index));
     }
 
-    // GET: /Admin/BlogPosts/Edit/5
     [HttpGet]
     public async Task<IActionResult> Edit(int id)
     {
@@ -96,7 +93,6 @@ public class BlogPostsController : Controller
         return View(blogPost);
     }
 
-    // POST: /Admin/BlogPosts/Edit
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(
@@ -122,11 +118,13 @@ public class BlogPostsController : Controller
         {
             var uploadsFolder = Path.Combine(
                 Directory.GetCurrentDirectory(),
-                "wwwroot/uploads/blog"
-            );
+                "wwwroot",
+                "uploads",
+                "blog");
 
-            if (!Directory.Exists(uploadsFolder))
-                Directory.CreateDirectory(uploadsFolder);
+            Directory.CreateDirectory(uploadsFolder);
+
+            var oldImageUrl = existingPost.ImageUrl;
 
             var fileName =
                 Guid.NewGuid() +
@@ -134,18 +132,34 @@ public class BlogPostsController : Controller
 
             var filePath = Path.Combine(
                 uploadsFolder,
-                fileName
-            );
+                fileName);
 
             using (var stream = new FileStream(
-                       filePath,
-                       FileMode.Create))
+                filePath,
+                FileMode.Create))
             {
                 await image.CopyToAsync(stream);
             }
 
             existingPost.ImageUrl =
                 "/uploads/blog/" + fileName;
+
+            if (!string.IsNullOrEmpty(oldImageUrl))
+            {
+                var oldImagePath = Path.Combine(
+                    Directory.GetCurrentDirectory(),
+                    "wwwroot",
+                    oldImageUrl
+                        .TrimStart('/')
+                        .Replace(
+                            '/',
+                            Path.DirectorySeparatorChar));
+
+                if (System.IO.File.Exists(oldImagePath))
+                {
+                    System.IO.File.Delete(oldImagePath);
+                }
+            }
         }
 
         await _blogPostManager.UpdateAsync(existingPost);
@@ -153,11 +167,33 @@ public class BlogPostsController : Controller
         return RedirectToAction(nameof(Index));
     }
 
-    // POST: /Admin/BlogPosts/Delete/5
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Delete(int id)
     {
+        var blogPost =
+            await _blogPostManager.GetByIdAsync(id);
+
+        if (blogPost == null)
+            return NotFound();
+
+        if (!string.IsNullOrEmpty(blogPost.ImageUrl))
+        {
+            var imagePath = Path.Combine(
+                Directory.GetCurrentDirectory(),
+                "wwwroot",
+                blogPost.ImageUrl
+                    .TrimStart('/')
+                    .Replace(
+                        '/',
+                        Path.DirectorySeparatorChar));
+
+            if (System.IO.File.Exists(imagePath))
+            {
+                System.IO.File.Delete(imagePath);
+            }
+        }
+
         await _blogPostManager.DeleteAsync(id);
 
         return RedirectToAction(nameof(Index));

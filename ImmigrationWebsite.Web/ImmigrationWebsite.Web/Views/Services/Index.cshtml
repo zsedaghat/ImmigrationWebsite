@@ -1,0 +1,226 @@
+﻿@model ImmigrationWebsite.Web.Models.Pagination.PagedResult<ImmigrationWebsite.Web.Models.Service>
+
+@{
+    ViewData["Title"] = "Services";
+}
+
+<!-- Services Start -->
+<div class="container-fluid service overflow-hidden py-5">
+    <div class="container py-5">
+
+        <!-- Section Title -->
+        <div class="section-title text-center mb-5 wow fadeInUp"
+             data-wow-delay="0.1s">
+
+            <div class="sub-style">
+                <h5 class="sub-title text-primary px-3">
+                    Visa Categories
+                </h5>
+            </div>
+
+            <h1 class="display-5 mb-4">
+                Enabling Your Immigration Successfully
+            </h1>
+
+            <p class="mb-0">
+                Explore our immigration and visa services and find
+                the right solution for your immigration needs.
+            </p>
+
+        </div>
+        <!-- Section Title End -->
+        <!-- Services List -->
+        <div class="row g-4">
+
+            @foreach (var service in Model.Items)
+            {
+                <div class="col-lg-6 col-xl-4 wow fadeInUp"
+                     data-wow-delay="0.1s">
+
+                    <div class="service-item">
+
+                        <div class="service-inner">
+
+                            <!-- Image -->
+                            <div class="service-img">
+
+                                @if (!string.IsNullOrEmpty(service.ImageUrl))
+                                {
+                                    <img src="@service.ImageUrl"
+                                         class="img-fluid w-100 rounded service-page-image"
+                                         alt="@service.Title">
+                                }
+                                else
+                                {
+                                    <img src="~/img/service-1.jpg"
+                                         class="img-fluid w-100 rounded service-page-image"
+                                         alt="@service.Title">
+                                }
+
+                            </div>
+                            <!-- Image End -->
+                            <!-- Service Title -->
+                            <div class="service-title">
+
+                                <div class="service-title-name">
+
+                                    <div class="bg-primary text-center rounded p-3 mx-5 mb-4">
+
+                                        <a asp-controller="Services"
+                                           asp-action="Details"
+                                           asp-route-id="@service.Id"
+                                           class="h4 text-white mb-0">
+
+                                            @service.Title
+
+                                        </a>
+
+                                    </div>
+
+
+                                    <a asp-controller="Services"
+                                       asp-action="Details"
+                                       asp-route-id="@service.Id"
+                                       class="btn bg-light text-secondary rounded-pill py-3 px-5 mb-4">
+
+                                        Explore More
+
+                                    </a>
+
+                                </div>
+
+
+                                <!-- Service Content -->
+                                <div class="service-content pb-4">
+
+                                    <a asp-controller="Services"
+                                       asp-action="Details"
+                                       asp-route-id="@service.Id">
+
+                                        <h4 class="text-white mb-4 py-3">
+                                            @service.Title
+                                        </h4>
+
+                                    </a>
+
+                                    <div class="px-4">
+
+                                        <p class="mb-4">
+                                            @service.Description
+                                        </p>
+
+                                        <a asp-controller="Services"
+                                           asp-action="Details"
+                                           asp-route-id="@service.Id"
+                                           class="btn btn-primary border-secondary rounded-pill py-3 px-5">
+
+                                            Explore More
+
+                                        </a>
+
+                                    </div>
+
+                                </div>
+                                <!-- Service Content End -->
+
+                            </div>
+                            <!-- Service Title End -->
+
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+        <!-- Services List End -->
+        <!-- Pagination -->
+        @if (Model.TotalPages > 1)
+        {
+            <div class="row mt-5">
+
+                <div class="col-12">
+
+                    <nav aria-label="Services pagination">
+
+                        <ul class="pagination justify-content-center">
+
+                            <!-- Previous -->
+                            <li class="page-item @(Model.HasPreviousPage ? "" : "disabled")">
+
+                                @if (Model.HasPreviousPage)
+                                {
+                                    <a class="page-link rounded-pill mx-1"
+                                       asp-controller="Services"
+                                       asp-action="Index"
+                                       asp-route-page="@(Model.PageNumber - 1)">
+
+                                        Previous
+
+                                    </a>
+                                }
+                                else
+                                {
+                                    <span class="page-link rounded-pill mx-1">
+                                        Previous
+                                    </span>
+                                }
+
+                            </li>
+
+
+                            <!-- Page Numbers -->
+                            @for (int i = 1; i <= Model.TotalPages; i++)
+                            {
+                                <li class="page-item @(i == Model.PageNumber ? "active" : "")">
+
+                                    <a class="page-link rounded-pill mx-1"
+                                       asp-controller="Services"
+                                       asp-action="Index"
+                                       asp-route-page="@i">
+
+                                        @i
+
+                                    </a>
+
+                                </li>
+                            }
+
+
+                            <!-- Next -->
+                            <li class="page-item @(Model.HasNextPage ? "" : "disabled")">
+
+                                @if (Model.HasNextPage)
+                                {
+                                    <a class="page-link rounded-pill mx-1"
+                                       asp-controller="Services"
+                                       asp-action="Index"
+                                       asp-route-page="@(Model.PageNumber + 1)">
+
+                                        Next
+
+                                    </a>
+                                }
+                                else
+                                {
+                                    <span class="page-link rounded-pill mx-1">
+                                        Next
+                                    </span>
+                                }
+
+                            </li>
+
+                        </ul>
+
+                    </nav>
+
+                </div>
+
+            </div>
+        }
+        <!-- Pagination End -->
+
+    </div>
+</div>
+<!-- Services End -->

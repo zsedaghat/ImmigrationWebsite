@@ -1,0 +1,86 @@
+﻿@model ImmigrationWebsite.Web.Models.Service
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<!-- Service Details Start -->
+<div class="container-fluid py-5">
+    <div class="container py-5">
+
+        <div class="row g-5 align-items-center">
+
+            <!-- Service Image -->
+            <div class="col-lg-6 wow fadeInLeft"
+                 data-wow-delay="0.1s">
+
+                <div class="service-details-image">
+
+                    @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                    {
+                        <img src="@Model.ImageUrl"
+                             class="img-fluid w-100 rounded"
+                             alt="@Model.Title">
+                    }
+                    else
+                    {
+                        <img src="~/img/service-1.jpg"
+                             class="img-fluid w-100 rounded"
+                             alt="@Model.Title">
+                    }
+
+                </div>
+
+            </div>
+            <!-- Service Image End -->
+            <!-- Service Content -->
+            <div class="col-lg-6 wow fadeInRight"
+                 data-wow-delay="0.3s">
+
+                <div class="mb-3">
+                    <span class="text-primary text-uppercase fw-bold">
+                        Immigration Service
+                    </span>
+                </div>
+
+                <h1 class="display-5 mb-4">
+                    @Model.Title
+                </h1>
+
+                @if (!string.IsNullOrWhiteSpace(Model.Description))
+                {
+                    <p class="mb-4">
+                        @Model.Description
+                    </p>
+                }
+                else
+                {
+                    <p class="mb-4 text-muted">
+                        More information about this service will be available soon.
+                    </p>
+                }
+
+                <div class="d-flex flex-wrap gap-3">
+
+                    <a asp-controller="Services"
+                       asp-action="Index"
+                       class="btn btn-primary border-secondary rounded-pill py-3 px-5">
+                        Back to Services
+                    </a>
+
+                    <a asp-controller="Home"
+                       asp-action="Contact"
+                       class="btn btn-secondary rounded-pill py-3 px-5">
+                        Contact Us
+                    </a>
+
+                </div>
+
+            </div>
+            <!-- Service Content End -->
+
+        </div>
+
+    </div>
+</div>
+<!-- Service Details End -->

@@ -345,10 +345,14 @@
                                             </td>
 
                                             <td>
+                                                @request.CreatedAt.ToLocalTime().ToString("yyyy/MM/dd HH:mm")
+                                            </td>
+
+                                         @*    <td>
                                                 @request.CreatedAt
                                                 .ToLocalTime()
                                                 .ToString("yyyy/MM/dd HH:mm")
-                                            </td>
+                                            </td> *@
 
                                             <td class="text-center">
 

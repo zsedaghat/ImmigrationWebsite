@@ -1,10 +1,12 @@
 ﻿using ImmigrationWebsite.Web.Models;
 using ImmigrationWebsite.Web.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ImmigrationWebsite.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class ServicesController : Controller
     {
         private readonly IServiceManager _serviceManager;
@@ -14,10 +16,9 @@ namespace ImmigrationWebsite.Web.Areas.Admin.Controllers
             _serviceManager = serviceManager;
         }
 
-        // GET: /Admin/Services
         public async Task<IActionResult> Index(
-          int page = 1,
-          int pageSize = 10)
+            int page = 1,
+            int pageSize = 10)
         {
             var services = await _serviceManager.GetPagedAsync(
                 page,
@@ -26,17 +27,17 @@ namespace ImmigrationWebsite.Web.Areas.Admin.Controllers
             return View(services);
         }
 
-        // GET: /Admin/Services/Create
         [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: /Admin/Services/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Service service, IFormFile? image)
+        public async Task<IActionResult> Create(
+            Service service,
+            IFormFile? image)
         {
             if (!ModelState.IsValid)
                 return View(service);
@@ -45,21 +46,28 @@ namespace ImmigrationWebsite.Web.Areas.Admin.Controllers
             {
                 var uploadsFolder = Path.Combine(
                     Directory.GetCurrentDirectory(),
-                    "wwwroot/uploads/services"
-                );
+                    "wwwroot",
+                    "uploads",
+                    "services");
 
-                if (!Directory.Exists(uploadsFolder))
-                    Directory.CreateDirectory(uploadsFolder);
+                Directory.CreateDirectory(uploadsFolder);
 
-                var fileName = Guid.NewGuid() + Path.GetExtension(image.FileName);
-                var filePath = Path.Combine(uploadsFolder, fileName);
+                var fileName =
+                    Guid.NewGuid() + Path.GetExtension(image.FileName);
 
-                using (var stream = new FileStream(filePath, FileMode.Create))
+                var filePath = Path.Combine(
+                    uploadsFolder,
+                    fileName);
+
+                using (var stream = new FileStream(
+                    filePath,
+                    FileMode.Create))
                 {
                     await image.CopyToAsync(stream);
                 }
 
-                service.ImageUrl = "/uploads/services/" + fileName;
+                service.ImageUrl =
+                    "/uploads/services/" + fileName;
             }
 
             await _serviceManager.AddAsync(service);
@@ -67,7 +75,6 @@ namespace ImmigrationWebsite.Web.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        // GET: /Admin/Services/Edit/5
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
@@ -79,15 +86,17 @@ namespace ImmigrationWebsite.Web.Areas.Admin.Controllers
             return View(service);
         }
 
-        // POST: /Admin/Services/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Service service, IFormFile? image)
+        public async Task<IActionResult> Edit(
+            Service service,
+            IFormFile? image)
         {
             if (!ModelState.IsValid)
                 return View(service);
 
-            var existingService = await _serviceManager.GetByIdAsync(service.Id);
+            var existingService =
+                await _serviceManager.GetByIdAsync(service.Id);
 
             if (existingService == null)
                 return NotFound();
@@ -101,21 +110,47 @@ namespace ImmigrationWebsite.Web.Areas.Admin.Controllers
             {
                 var uploadsFolder = Path.Combine(
                     Directory.GetCurrentDirectory(),
-                    "wwwroot/uploads/services"
-                );
+                    "wwwroot",
+                    "uploads",
+                    "services");
 
-                if (!Directory.Exists(uploadsFolder))
-                    Directory.CreateDirectory(uploadsFolder);
+                Directory.CreateDirectory(uploadsFolder);
 
-                var fileName = Guid.NewGuid() + Path.GetExtension(image.FileName);
-                var filePath = Path.Combine(uploadsFolder, fileName);
+                var oldImageUrl = existingService.ImageUrl;
 
-                using (var stream = new FileStream(filePath, FileMode.Create))
+                var fileName =
+                    Guid.NewGuid() + Path.GetExtension(image.FileName);
+
+                var filePath = Path.Combine(
+                    uploadsFolder,
+                    fileName);
+
+                using (var stream = new FileStream(
+                    filePath,
+                    FileMode.Create))
                 {
                     await image.CopyToAsync(stream);
                 }
 
-                existingService.ImageUrl = "/uploads/services/" + fileName;
+                existingService.ImageUrl =
+                    "/uploads/services/" + fileName;
+
+                if (!string.IsNullOrEmpty(oldImageUrl))
+                {
+                    var oldImagePath = Path.Combine(
+                        Directory.GetCurrentDirectory(),
+                        "wwwroot",
+                        oldImageUrl
+                            .TrimStart('/')
+                            .Replace(
+                                '/',
+                                Path.DirectorySeparatorChar));
+
+                    if (System.IO.File.Exists(oldImagePath))
+                    {
+                        System.IO.File.Delete(oldImagePath);
+                    }
+                }
             }
 
             await _serviceManager.UpdateAsync(existingService);
@@ -123,11 +158,33 @@ namespace ImmigrationWebsite.Web.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        // POST: /Admin/Services/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id)
         {
+            var service =
+                await _serviceManager.GetByIdAsync(id);
+
+            if (service == null)
+                return NotFound();
+
+            if (!string.IsNullOrEmpty(service.ImageUrl))
+            {
+                var imagePath = Path.Combine(
+                    Directory.GetCurrentDirectory(),
+                    "wwwroot",
+                    service.ImageUrl
+                        .TrimStart('/')
+                        .Replace(
+                            '/',
+                            Path.DirectorySeparatorChar));
+
+                if (System.IO.File.Exists(imagePath))
+                {
+                    System.IO.File.Delete(imagePath);
+                }
+            }
+
             await _serviceManager.DeleteAsync(id);
 
             return RedirectToAction(nameof(Index));

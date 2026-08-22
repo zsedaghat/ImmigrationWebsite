@@ -27,54 +27,73 @@ public class CountriesController : Controller
         return View(countries);
     }
 
-    [HttpGet]
-    public IActionResult Create()
-    {
-        return View();
-    }
-
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(
         Country country,
-        IFormFile? Image)
+        IFormFile? Image,
+        IFormFile? FlagImage)
     {
-
-        var name = country.Name;
-        var description = country.Description;
-        var displayOrder = country.DisplayOrder;
-        var isActive = country.IsActive;
-
         if (!ModelState.IsValid)
             return View(country);
 
+        var uploadsFolder = Path.Combine(
+            Directory.GetCurrentDirectory(),
+            "wwwroot",
+            "uploads",
+            "countries");
+
+        Directory.CreateDirectory(uploadsFolder);
+
+        // Country Image
         if (Image != null && Image.Length > 0)
         {
-            var uploadsFolder = Path.Combine(
-                Directory.GetCurrentDirectory(),
-                "wwwroot",
-                "uploads",
-                "countries");
-
-            Directory.CreateDirectory(uploadsFolder);
-
-            var fileName = Guid.NewGuid() + Path.GetExtension(Image.FileName);
+            var fileName =
+                Guid.NewGuid() + Path.GetExtension(Image.FileName);
 
             var filePath = Path.Combine(
                 uploadsFolder,
                 fileName);
 
-            using (var stream = new FileStream(filePath, FileMode.Create))
-            {
-                await Image.CopyToAsync(stream);
-            }
+            using var stream = new FileStream(
+                filePath,
+                FileMode.Create);
 
-            country.ImageUrl = "/uploads/countries/" + fileName;
+            await Image.CopyToAsync(stream);
+
+            country.ImageUrl =
+                "/uploads/countries/" + fileName;
+        }
+
+        // Country Flag
+        if (FlagImage != null && FlagImage.Length > 0)
+        {
+            var fileName =
+                Guid.NewGuid() + Path.GetExtension(FlagImage.FileName);
+
+            var filePath = Path.Combine(
+                uploadsFolder,
+                fileName);
+
+            using var stream = new FileStream(
+                filePath,
+                FileMode.Create);
+
+            await FlagImage.CopyToAsync(stream);
+
+            country.FlagImageUrl =
+                "/uploads/countries/" + fileName;
         }
 
         await _countryService.AddAsync(country);
 
         return RedirectToAction(nameof(Index));
+    }
+
+    [HttpGet]
+    public IActionResult Create()
+    {
+        return View();
     }
 
     [HttpGet]
@@ -91,13 +110,15 @@ public class CountriesController : Controller
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(
-    Country country,
-    IFormFile? Image)
+        Country country,
+        IFormFile? Image,
+        IFormFile? FlagImage)
     {
         if (!ModelState.IsValid)
             return View(country);
 
-        var existingCountry = await _countryService.GetByIdAsync(country.Id);
+        var existingCountry =
+            await _countryService.GetByIdAsync(country.Id);
 
         if (existingCountry == null)
             return NotFound();
@@ -107,16 +128,20 @@ public class CountriesController : Controller
         existingCountry.DisplayOrder = country.DisplayOrder;
         existingCountry.IsActive = country.IsActive;
 
+        var uploadsFolder = Path.Combine(
+            Directory.GetCurrentDirectory(),
+            "wwwroot",
+            "uploads",
+            "countries");
+
+        Directory.CreateDirectory(uploadsFolder);
+
+        // =========================
+        // Country Image
+        // =========================
+
         if (Image != null && Image.Length > 0)
         {
-            var uploadsFolder = Path.Combine(
-                Directory.GetCurrentDirectory(),
-                "wwwroot",
-                "uploads",
-                "countries");
-
-            Directory.CreateDirectory(uploadsFolder);
-
             var oldImageUrl = existingCountry.ImageUrl;
 
             var fileName =
@@ -152,6 +177,47 @@ public class CountriesController : Controller
             }
         }
 
+        // =========================
+        // Country Flag
+        // =========================
+
+        if (FlagImage != null && FlagImage.Length > 0)
+        {
+            var oldFlagUrl = existingCountry.FlagImageUrl;
+
+            var fileName =
+                Guid.NewGuid() + Path.GetExtension(FlagImage.FileName);
+
+            var filePath = Path.Combine(
+                uploadsFolder,
+                fileName);
+
+            using (var stream = new FileStream(
+                filePath,
+                FileMode.Create))
+            {
+                await FlagImage.CopyToAsync(stream);
+            }
+
+            existingCountry.FlagImageUrl =
+                "/uploads/countries/" + fileName;
+
+            // Delete old flag
+            if (!string.IsNullOrEmpty(oldFlagUrl))
+            {
+                var oldFlagPath = Path.Combine(
+                    Directory.GetCurrentDirectory(),
+                    "wwwroot",
+                    oldFlagUrl.TrimStart('/')
+                        .Replace('/', Path.DirectorySeparatorChar));
+
+                if (System.IO.File.Exists(oldFlagPath))
+                {
+                    System.IO.File.Delete(oldFlagPath);
+                }
+            }
+        }
+
         await _countryService.UpdateAsync(existingCountry);
 
         return RedirectToAction(nameof(Index));
@@ -166,6 +232,7 @@ public class CountriesController : Controller
         if (country == null)
             return NotFound();
 
+        // Delete Country Image
         if (!string.IsNullOrEmpty(country.ImageUrl))
         {
             var imagePath = Path.Combine(
@@ -177,6 +244,21 @@ public class CountriesController : Controller
             if (System.IO.File.Exists(imagePath))
             {
                 System.IO.File.Delete(imagePath);
+            }
+        }
+
+        // Delete Country Flag
+        if (!string.IsNullOrEmpty(country.FlagImageUrl))
+        {
+            var flagPath = Path.Combine(
+                Directory.GetCurrentDirectory(),
+                "wwwroot",
+                country.FlagImageUrl.TrimStart('/')
+                    .Replace('/', Path.DirectorySeparatorChar));
+
+            if (System.IO.File.Exists(flagPath))
+            {
+                System.IO.File.Delete(flagPath);
             }
         }
 

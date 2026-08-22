@@ -1,9 +1,11 @@
 ﻿using ImmigrationWebsite.Web.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ImmigrationWebsite.Web.Areas.Admin.Controllers;
 
 [Area("Admin")]
+[Authorize(Roles = "Admin")]
 public class ConsultationRequestsController : Controller
 {
     private readonly IConsultationRequestManager _requestManager;

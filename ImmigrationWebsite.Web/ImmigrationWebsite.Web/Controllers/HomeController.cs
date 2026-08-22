@@ -1,4 +1,5 @@
 using ImmigrationWebsite.Web.Models;
+using ImmigrationWebsite.Web.Models.ViewModels;
 using ImmigrationWebsite.Web.Services;
 using ImmigrationWebsite.Web.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -10,18 +11,42 @@ namespace ImmigrationWebsite.Web.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly ICountryService _countryService;
+        private readonly IServiceManager _serviceManager;
+
 
         public HomeController(
-      ILogger<HomeController> logger,
-      ICountryService countryService)
+            ILogger<HomeController> logger,
+            ICountryService countryService,
+            IServiceManager serviceManager)
         {
             _logger = logger;
             _countryService = countryService;
+            _serviceManager = serviceManager;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var countries = await _countryService.GetPagedAsync(1, 4);
+
+            countries.Items = countries.Items
+                .Where(x => x.IsActive)
+                .OrderBy(x => x.DisplayOrder)
+                .ToList();
+
+            var services = await _serviceManager.GetPagedAsync(1, 6);
+
+            services.Items = services.Items
+                .Where(x => x.IsActive)
+                .OrderBy(x => x.DisplayOrder)
+                .ToList();
+
+            var model = new HomeViewModel
+            {
+                Countries = countries.Items,
+                Services = services.Items
+            };
+
+            return View(model);
         }
 
         public IActionResult About()
@@ -34,15 +59,6 @@ namespace ImmigrationWebsite.Web.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Countries(int page = 1,
-         int pageSize = 10)
-        {
-            var countries = await _countryService.GetPagedAsync(page,
-                pageSize);
-
-            return View(countries);
-        }
-
         public IActionResult Blog()
         {
             return View();
@@ -52,15 +68,23 @@ namespace ImmigrationWebsite.Web.Controllers
         {
             return View();
         }
+
         public IActionResult Privacy()
         {
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        [ResponseCache(
+            Duration = 0,
+            Location = ResponseCacheLocation.None,
+            NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(new ErrorViewModel
+            {
+                RequestId = Activity.Current?.Id
+                    ?? HttpContext.TraceIdentifier
+            });
         }
     }
 }

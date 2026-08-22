@@ -1,0 +1,185 @@
+﻿@model ImmigrationWebsite.Web.Models.Pagination.PagedResult<ImmigrationWebsite.Web.Models.BlogPost>
+
+@{
+    ViewData["Title"] = "Blog";
+}
+
+<!-- Page Header Start -->
+<div class="container-fluid bg-breadcrumb">
+    <div class="container text-center py-5" style="max-width: 900px;">
+        <h4 class="text-white display-4 mb-4 wow fadeInDown">
+            Immigration Blog
+        </h4>
+
+        <p class="text-white mb-0">
+            Latest immigration news, visa guides and useful information.
+        </p>
+    </div>
+</div>
+<!-- Page Header End -->
+<!-- Blog Start -->
+<div class="container-fluid blog py-5">
+    <div class="container py-5">
+
+        <div class="section-title text-center mb-5 wow fadeInUp"
+             data-wow-delay="0.1s">
+
+            <div class="sub-style">
+                <h5 class="sub-title text-primary px-3">
+                    OUR BLOG
+                </h5>
+            </div>
+
+            <h1 class="display-5 mb-4">
+                Latest Immigration Articles
+            </h1>
+
+            <p class="mb-0">
+                Explore our latest immigration news, visa guides
+                and helpful information.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            @foreach (var post in Model.Items)
+            {
+                <div class="col-lg-6 col-xl-4 wow fadeInUp"
+                     data-wow-delay="0.1s">
+
+                    <div class="blog-item">
+
+                        <!-- Image -->
+                        <div class="blog-img">
+
+                            @if (!string.IsNullOrEmpty(post.ImageUrl))
+                            {
+                                <img src="@post.ImageUrl"
+                                     class="img-fluid w-100"
+                                     alt="@post.Title">
+                            }
+                            else
+                            {
+                                <img src="~/img/blog-1.jpg"
+                                     class="img-fluid w-100"
+                                     alt="@post.Title">
+                            }
+
+                        </div>
+
+
+                        <!-- Content -->
+                        <div class="blog-content p-4">
+
+                            <div class="d-flex justify-content-between mb-3">
+
+                                <small class="text-primary">
+                                    <i class="fas fa-calendar-alt me-2"></i>
+                                    @post.PublishedAt.ToString("MMM dd, yyyy")
+                                </small>
+
+                            </div>
+
+
+                            <h4 class="mb-3">
+                                @post.Title
+                            </h4>
+
+
+                            @if (!string.IsNullOrEmpty(post.Summary))
+                            {
+                                <p class="mb-4">
+                                    @post.Summary
+                                </p>
+                            }
+
+
+                            <a asp-controller="Blog"
+                               asp-action="Details"
+                               asp-route-id="@post.Id"
+                               class="btn btn-primary rounded-pill py-2 px-4">
+
+                                Read More
+                                <i class="fas fa-arrow-right ms-2"></i>
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+
+
+        <!-- Pagination -->
+        @if (Model.TotalPages > 1)
+        {
+            <div class="col-12 mt-5">
+
+                <nav>
+                    <ul class="pagination justify-content-center">
+
+                        @if (Model.HasPreviousPage)
+                        {
+                            <li class="page-item">
+
+                                <a class="page-link"
+                                   asp-controller="Blog"
+                                   asp-action="Index"
+                                   asp-route-page="@(Model.PageNumber - 1)">
+
+                                    Previous
+
+                                </a>
+
+                            </li>
+                        }
+
+
+                        @for (int i = 1; i <= Model.TotalPages; i++)
+                        {
+                            <li class="page-item @(i == Model.PageNumber ? "active" : "")">
+
+                                <a class="page-link"
+                                   asp-controller="Blog"
+                                   asp-action="Index"
+                                   asp-route-page="@i">
+
+                                    @i
+
+                                </a>
+
+                            </li>
+                        }
+
+
+                        @if (Model.HasNextPage)
+                        {
+                            <li class="page-item">
+
+                                <a class="page-link"
+                                   asp-controller="Blog"
+                                   asp-action="Index"
+                                   asp-route-page="@(Model.PageNumber + 1)">
+
+                                    Next
+
+                                </a>
+
+                            </li>
+                        }
+
+                    </ul>
+                </nav>
+
+            </div>
+        }
+
+    </div>
+</div>
+<!-- Blog End -->

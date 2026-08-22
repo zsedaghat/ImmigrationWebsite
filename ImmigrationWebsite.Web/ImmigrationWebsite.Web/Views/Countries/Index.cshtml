@@ -1,0 +1,217 @@
+﻿
+@model ImmigrationWebsite.Web.Models.Pagination.PagedResult<ImmigrationWebsite.Web.Models.Country>
+
+@{
+    ViewData["Title"] = "Countries";
+}
+
+<!-- Page Header Start -->
+<div class="container-fluid bg-breadcrumb">
+    <div class="container text-center py-5" style="max-width: 900px;">
+
+        <h4 class="text-white display-4 mb-4">
+            Countries
+        </h4>
+
+        <ol class="breadcrumb d-flex justify-content-center mb-0">
+
+            <li class="breadcrumb-item">
+                <a asp-controller="Home"
+                   asp-action="Index">
+                    Home
+                </a>
+            </li>
+
+            <li class="breadcrumb-item active text-primary">
+                Countries
+            </li>
+
+        </ol>
+
+    </div>
+</div>
+<!-- Page Header End -->
+<!-- Countries Start -->
+<div class="container-fluid country overflow-hidden py-5">
+
+    <div class="container py-5">
+
+        <!-- Section Title -->
+        <div class="section-title text-center mb-5 wow fadeInUp"
+             data-wow-delay="0.1s">
+
+            <div class="sub-style">
+                <h5 class="sub-title text-primary px-3">
+                    COUNTRIES WE OFFER
+                </h5>
+            </div>
+
+            <h1 class="display-5 mb-4">
+                Immigration & Visa Services
+            </h1>
+
+            <p class="mb-0">
+                Explore the countries where we provide
+                immigration and visa services.
+            </p>
+
+        </div>
+
+
+        <!-- Countries Grid -->
+        <div class="row g-4">
+
+            @foreach (var country in Model.Items)
+            {
+                <div class="col-lg-6 col-xl-3 wow fadeInUp"
+                     data-wow-delay="0.1s">
+
+                    <div class="country-item">
+
+                        <!-- Country Image -->
+                        <div class="rounded overflow-hidden">
+
+                            @if (!string.IsNullOrEmpty(country.ImageUrl))
+                            {
+                                <img src="@country.ImageUrl"
+                                     class="img-fluid w-100 rounded"
+                                     alt="@country.Name">
+                            }
+                            else
+                            {
+                                <img src="~/img/country-1.jpg"
+                                     class="img-fluid w-100 rounded"
+                                     alt="@country.Name">
+                            }
+
+                        </div>
+
+
+                        <!-- Country Flag -->
+                        @if (!string.IsNullOrEmpty(country.FlagImageUrl))
+                        {
+                            <div class="country-flag">
+
+                                <img src="@country.FlagImageUrl"
+                                     class="img-fluid rounded-circle"
+                                     alt="@country.Name Flag">
+
+                            </div>
+                        }
+
+
+                        <!-- Country Name -->
+                        <div class="country-name">
+
+                            <a asp-controller="Countries"
+                               asp-action="Details"
+                               asp-route-id="@country.Id"
+                               class="text-white fs-4">
+
+                                @country.Name
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+
+
+        <!-- Empty State -->
+        @if (!Model.Items.Any())
+        {
+            <div class="text-center py-5">
+
+                <i class="fas fa-globe fa-4x text-primary mb-4"></i>
+
+                <h4>
+                    No countries available
+                </h4>
+
+                <p class="text-muted">
+                    There are currently no active countries to display.
+                </p>
+
+            </div>
+        }
+
+
+        <!-- Pagination -->
+        @if (Model.TotalPages > 1)
+        {
+            <div class="d-flex justify-content-center mt-5">
+
+                <nav aria-label="Countries pagination">
+
+                    <ul class="pagination">
+
+
+                        <!-- Previous -->
+                        @if (Model.HasPreviousPage)
+                        {
+                            <li class="page-item">
+
+                                <a class="page-link"
+                                   asp-controller="Countries"
+                                   asp-action="Index"
+                                   asp-route-page="@(Model.PageNumber - 1)">
+
+                                    <i class="fas fa-chevron-left"></i>
+
+                                </a>
+
+                            </li>
+                        }
+
+
+                        <!-- Page Numbers -->
+                        @for (int i = 1; i <= Model.TotalPages; i++)
+                        {
+                            <li class="page-item @(i == Model.PageNumber ? "active" : "")">
+
+                                <a class="page-link"
+                                   asp-controller="Countries"
+                                   asp-action="Index"
+                                   asp-route-page="@i">
+
+                                    @i
+
+                                </a>
+
+                            </li>
+                        }
+
+
+                        <!-- Next -->
+                        @if (Model.HasNextPage)
+                        {
+                            <li class="page-item">
+
+                                <a class="page-link"
+                                   asp-controller="Countries"
+                                   asp-action="Index"
+                                   asp-route-page="@(Model.PageNumber + 1)">
+
+                                    <i class="fas fa-chevron-right"></i>
+
+                                </a>
+
+                            </li>
+                        }
+
+                    </ul>
+
+                </nav>
+
+            </div>
+        }
+
+    </div>
+
+</div>
+<!-- Countries End -->

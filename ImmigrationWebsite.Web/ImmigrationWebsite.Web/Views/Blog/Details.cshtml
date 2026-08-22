@@ -1,0 +1,104 @@
+﻿@model ImmigrationWebsite.Web.Models.BlogPost
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<!-- Page Header -->
+<div class="container-fluid bg-breadcrumb">
+    <div class="container text-center py-5"
+         style="max-width: 900px;">
+
+        <h4 class="text-white display-4 mb-4">
+            Blog Details
+        </h4>
+
+    </div>
+</div>
+
+
+<!-- Blog Details -->
+<div class="container-fluid py-5">
+
+    <div class="container py-5">
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-9">
+
+                <!-- Image -->
+                @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                {
+                    <div class="mb-4">
+
+                        <img src="@Model.ImageUrl"
+                             class="img-fluid w-100 rounded"
+                             alt="@Model.Title">
+
+                    </div>
+                }
+
+
+                <!-- Date -->
+                <div class="mb-3">
+
+                    <span class="text-primary">
+
+                        <i class="fas fa-calendar-alt me-2"></i>
+
+                        @Model.PublishedAt.ToString("MMMM dd, yyyy")
+
+                    </span>
+
+                </div>
+
+
+                <!-- Title -->
+                <h1 class="display-5 mb-4">
+
+                    @Model.Title
+
+                </h1>
+
+
+                <!-- Summary -->
+                @if (!string.IsNullOrEmpty(Model.Summary))
+                {
+                    <p class="lead mb-4">
+
+                        @Model.Summary
+
+                    </p>
+                }
+
+
+                <!-- Content -->
+                <div class="blog-details-content">
+
+                    @Html.Raw(Model.Content)
+
+                </div>
+
+
+                <!-- Back -->
+                <div class="mt-5">
+
+                    <a asp-controller="Blog"
+                       asp-action="Index"
+                       class="btn btn-primary rounded-pill py-3 px-5">
+
+                        <i class="fas fa-arrow-left me-2"></i>
+
+                        Back to Blog
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

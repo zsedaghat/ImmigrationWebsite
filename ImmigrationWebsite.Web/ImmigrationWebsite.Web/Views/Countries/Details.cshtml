@@ -1,0 +1,282 @@
+﻿@model ImmigrationWebsite.Web.Models.Country
+
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<!-- Page Header Start -->
+<div class="container-fluid bg-breadcrumb">
+    <div class="container text-center py-5" style="max-width: 900px;">
+
+        <h4 class="text-white display-4 mb-4">
+            @Model.Name
+        </h4>
+
+        <ol class="breadcrumb d-flex justify-content-center mb-0">
+
+            <li class="breadcrumb-item">
+                <a asp-controller="Home"
+                   asp-action="Index">
+                    Home
+                </a>
+            </li>
+
+            <li class="breadcrumb-item">
+                <a asp-controller="Countries"
+                   asp-action="Index">
+                    Countries
+                </a>
+            </li>
+
+            <li class="breadcrumb-item active text-primary">
+                @Model.Name
+            </li>
+
+        </ol>
+
+    </div>
+</div>
+<!-- Page Header End -->
+<!-- Country Details Start -->
+<div class="container-fluid py-5">
+
+    <div class="container py-5">
+
+        <div class="row g-5 align-items-center">
+
+            <!-- Country Image -->
+            <div class="col-lg-6 wow fadeInLeft"
+                 data-wow-delay="0.1s">
+
+                <div class="position-relative">
+
+                    @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                    {
+                        <img src="@Model.ImageUrl"
+                             class="img-fluid w-100 rounded"
+                             alt="@Model.Name">
+                    }
+                    else
+                    {
+                        <img src="~/img/country-1.jpg"
+                             class="img-fluid w-100 rounded"
+                             alt="@Model.Name">
+                    }
+
+
+                    <!-- Flag -->
+                    @if (!string.IsNullOrEmpty(Model.FlagImageUrl))
+                    {
+                        <div class="position-absolute"
+                             style="top: 20px; left: 20px; z-index: 10;">
+
+                            <img src="@Model.FlagImageUrl"
+                                 alt="@Model.Name Flag"
+                                 class="rounded-circle shadow"
+                                 style="
+                    width:80px;
+                    height:80px;
+                    object-fit:cover;
+                    border:4px solid white;
+                    background:white;
+                 ">
+
+                        </div>
+                    }
+
+                </div>
+
+            </div>
+
+
+            <!-- Country Information -->
+            <div class="col-lg-6 wow fadeInRight"
+                 data-wow-delay="0.3s">
+
+                <div class="mb-4">
+
+                    <div class="sub-style">
+                        <h5 class="sub-title text-primary px-3">
+                            COUNTRY INFORMATION
+                        </h5>
+                    </div>
+
+                    <h1 class="display-5 mb-4">
+                        Immigration to @Model.Name
+                    </h1>
+
+                </div>
+
+
+                @if (!string.IsNullOrWhiteSpace(Model.Description))
+                {
+                    <p class="fs-5 mb-4">
+                        @Model.Description
+                    </p>
+                }
+                else
+                {
+                    <p class="text-muted mb-4">
+                        Immigration and visa information for
+                        @Model.Name will be available soon.
+                    </p>
+                }
+
+
+                <!-- Country Status -->
+                <div class="d-flex align-items-center mb-4">
+
+                    <div class="bg-light rounded p-3 me-3">
+
+                        <i class="fas fa-check-circle fa-2x text-primary"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h5 class="mb-1">
+                            Immigration Services
+                        </h5>
+
+                        <p class="mb-0 text-muted">
+                            Professional immigration assistance
+                            for @Model.Name.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Consultation Button -->
+                <a asp-controller="Home"
+                   asp-action="Consultation"
+                   class="btn btn-primary border-secondary rounded-pill py-3 px-5">
+
+                    Request a Consultation
+
+                </a>
+
+                <a asp-controller="Countries"
+                   asp-action="Index"
+                   class="btn btn-secondary rounded-pill py-3 px-5 ms-2">
+
+                    Back to Countries
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- Country Details End -->
+<!-- Immigration Information Start -->
+<div class="container-fluid bg-light py-5">
+
+    <div class="container py-5">
+
+        <div class="section-title text-center mb-5">
+
+            <div class="sub-style">
+                <h5 class="sub-title text-primary px-3">
+                    WHY CHOOSE US
+                </h5>
+            </div>
+
+            <h1 class="display-5 mb-4">
+                Your Immigration Journey Starts Here
+            </h1>
+
+            <p class="mb-0">
+                We provide professional guidance throughout
+                your immigration process.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <!-- Visa Assistance -->
+            <div class="col-md-6 col-lg-4">
+
+                <div class="bg-white rounded p-4 h-100 shadow-sm text-center">
+
+                    <div class="mb-4">
+
+                        <i class="fas fa-passport fa-4x text-primary"></i>
+
+                    </div>
+
+                    <h4 class="mb-3">
+                        Visa Assistance
+                    </h4>
+
+                    <p class="mb-0">
+                        Get professional guidance for your
+                        visa application and documentation.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Expert Guidance -->
+            <div class="col-md-6 col-lg-4">
+
+                <div class="bg-white rounded p-4 h-100 shadow-sm text-center">
+
+                    <div class="mb-4">
+
+                        <i class="fas fa-user-tie fa-4x text-primary"></i>
+
+                    </div>
+
+                    <h4 class="mb-3">
+                        Expert Guidance
+                    </h4>
+
+                    <p class="mb-0">
+                        Receive personalized advice based on
+                        your immigration goals.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Fast Process -->
+            <div class="col-md-6 col-lg-4">
+
+                <div class="bg-white rounded p-4 h-100 shadow-sm text-center">
+
+                    <div class="mb-4">
+
+                        <i class="fas fa-clock fa-4x text-primary"></i>
+
+                    </div>
+
+                    <h4 class="mb-3">
+                        Faster Process
+                    </h4>
+
+                    <p class="mb-0">
+                        We help you prepare your application
+                        accurately and efficiently.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- Immigration Information End -->

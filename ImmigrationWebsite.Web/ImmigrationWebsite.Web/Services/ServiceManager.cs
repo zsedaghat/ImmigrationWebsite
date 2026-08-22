@@ -21,6 +21,7 @@ public class ServiceManager : IServiceManager
     {
         var query = _context.Services
             .AsNoTracking()
+            .Where(x => x.IsActive)
             .OrderBy(x => x.DisplayOrder)
             .ThenBy(x => x.Id);
 

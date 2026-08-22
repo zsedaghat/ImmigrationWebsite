@@ -16,11 +16,12 @@ namespace ImmigrationWebsite.Web.Services
         }
 
         public async Task<PagedResult<Country>> GetPagedAsync(
-        int pageNumber,
-        int pageSize)
+       int pageNumber,
+       int pageSize)
         {
             var query = _context.Countries
                 .AsNoTracking()
+                .Where(x => x.IsActive)
                 .OrderBy(x => x.DisplayOrder)
                 .ThenBy(x => x.Id);
 
