@@ -1,0 +1,236 @@
+﻿@model List<ImmigrationWebsite.Web.Models.Review>
+
+@{
+    ViewData["Title"] = "Reviews";
+}
+
+
+<div class="container-fluid">
+
+    <h1 class="mb-4">
+        Customer Reviews
+    </h1>
+
+
+    <div class="card">
+
+        <div class="card-body">
+
+
+            <table class="table table-bordered table-striped">
+
+                <thead>
+                    <tr>
+                        <th>
+                            Image
+                        </th>
+
+                        <th>
+                            Name
+                        </th>
+
+                        <th>
+                            Country
+                        </th>
+
+                        <th>
+                            Comment
+                        </th>
+
+                        <th>
+                            Rating
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th>
+                            Date
+                        </th>
+
+                        <th>
+                            Actions
+                        </th>
+
+                    </tr>
+                </thead>
+
+
+                <tbody>
+
+                    @foreach (var review in Model)
+                    {
+                        <tr>
+                            <td>
+
+                                @if (!string.IsNullOrEmpty(review.ImageUrl))
+                                {
+                                    <img src="@review.ImageUrl"
+                                         alt="@review.Name"
+                                         style="width:60px;height:60px;object-fit:cover;border-radius:50%;" />
+                                }
+                                else
+                                {
+                                    <span class="text-muted">
+                                        No Image
+                                    </span>
+                                }
+
+                            </td>
+
+                            <td>
+                                @review.Name
+                            </td>
+
+
+                            <td>
+                                @review.Country
+                            </td>
+
+
+                            <td class="review-column">
+
+                                <div class="review-scroll-box">
+                                    @review.Comment
+                                </div>
+
+                            </td>
+
+                            <td>
+                                @for (int i = 0; i < review.Rating; i++)
+                                {
+                                    <i class="fas fa-star text-warning"></i>
+                                }
+                            </td>
+
+
+                            <td>
+
+                                @if (review.Status == ReviewStatus.Approved)
+                                {
+                                    <span class="badge bg-success">
+                                        Approved
+                                    </span>
+                                }
+                                else if (review.Status == ReviewStatus.Rejected)
+                                {
+                                    <span class="badge bg-danger">
+                                        Rejected
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-warning">
+                                        Pending
+                                    </span>
+                                }
+
+                            </td>
+
+
+                            <td>
+                                @review.CreatedAt.ToString("yyyy-MM-dd")
+                            </td>
+
+                            <td>
+
+                                <div class="d-flex gap-2">
+
+
+                                    @if (review.Status != ReviewStatus.Approved)
+                                    {
+                                        <form asp-action="Approve"
+                                              method="post">
+
+                                            <input type="hidden"
+                                                   name="id"
+                                                   value="@review.Id" />
+
+                                            <button type="submit"
+                                                    class="btn btn-success btn-sm rounded-circle"
+                                                    title="Approve">
+
+                                                <i class="bi bi-check-lg"></i>
+
+                                            </button>
+
+                                        </form>
+                                    }
+
+
+
+                                    @if (review.Status != ReviewStatus.Rejected)
+                                    {
+                                        <form asp-action="Reject"
+                                              method="post">
+
+                                            <input type="hidden"
+                                                   name="id"
+                                                   value="@review.Id" />
+
+                                            <button type="submit"
+                                                    class="btn btn-warning btn-sm rounded-circle"
+                                                    title="Reject">
+
+                                                <i class="bi bi-x-lg"></i>
+
+                                            </button>
+
+                                        </form>
+                                    }
+
+
+
+                                    <form asp-action="Delete"
+                                          method="post">
+
+                                        <input type="hidden"
+                                               name="id"
+                                               value="@review.Id" />
+
+                                        <button type="submit"
+                                                class="btn btn-danger btn-sm rounded-circle"
+                                                title="Delete">
+
+                                            <i class="bi bi-trash"></i>
+
+                                        </button>
+
+                                    </form>
+
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+                    }
+
+
+                </tbody>
+
+            </table>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+<style>
+
+    .review-column {
+        width: 300px;
+    }
+
+    .review-scroll-box {
+        width: 280px;
+        height: 80px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        white-space: normal;
+    }
+
+</style>

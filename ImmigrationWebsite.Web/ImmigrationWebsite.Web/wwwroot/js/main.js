@@ -56,7 +56,7 @@
         smartSpeed: 2000,
         center: false,
         dots: false,
-        loop: true,
+        loop: $('.testimonial-carousel .testimonial-item').length > 1,
         margin: 25,
         nav : true,
         navText : [

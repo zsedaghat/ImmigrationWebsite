@@ -1,0 +1,30 @@
+﻿@model List<ImmigrationWebsite.Web.Models.Service>
+
+<div class="footer-item d-flex flex-column">
+
+    <h4 class="text-secondary mb-4">
+        Our Services
+    </h4>
+
+    @foreach (var service in Model)
+    {
+        <a asp-controller="Services"
+           asp-action="Details"
+           asp-route-id="@service.Id">
+
+            <i class="fas fa-angle-right me-2"></i>
+            @service.Title
+
+        </a>
+    }
+
+    <a asp-controller="Services"
+       asp-action="Index"
+       class="mt-2">
+
+        <i class="fas fa-angle-right me-2"></i>
+        View All Services
+
+    </a>
+
+</div>

@@ -89,7 +89,7 @@
                             <a href="/Admin/Countries"
                                class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Countries" ? "active" : "")">
 
-                                <i class="nav-icon bi bi-globe"></i>
+                                <i class="nav-icon bi bi-globe2"></i>
 
                                 <p>
                                     Countries
@@ -102,7 +102,7 @@
                             <a href="/Admin/Services"
                                class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Services" ? "active" : "")">
 
-                                <i class="nav-icon bi bi-globe"></i>
+                                <i class="nav-icon bi bi-briefcase"></i>
 
                                 <p>
                                     Services
@@ -115,7 +115,7 @@
                             <a href="/Admin/BlogPosts"
                                class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "BlogPosts" ? "active" : "")">
 
-                                <i class="nav-icon bi bi-globe"></i>
+                                <i class="nav-icon bi bi-file-earmark-text"></i>
 
                                 <p>
                                     Blog Posts
@@ -128,10 +128,25 @@
                             <a href="/Admin/ConsultationRequests"
                                class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "ConsultationRequests" ? "active" : "")">
 
-                                <i class="nav-icon bi bi-globe"></i>
+                                <i class="nav-icon bi bi-chat-left-text"></i>
 
                                 <p>
                                     Consultation Requests
+                                </p>
+
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a asp-area="Admin"
+                               asp-controller="Reviews"
+                               asp-action="Index"
+                               class="nav-link">
+
+                                <i class="nav-icon bi bi-star-fill"></i>
+
+                                <p>
+                                    Reviews
                                 </p>
 
                             </a>

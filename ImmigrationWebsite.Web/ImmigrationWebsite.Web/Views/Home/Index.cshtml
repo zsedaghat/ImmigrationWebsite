@@ -17,7 +17,12 @@
                         <p class="text-white mb-4 mb-md-5 fs-5 wow fadeInUp" data-wow-delay="0.5s">
                             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
                         </p>
-                        <a class="btn btn-primary border-secondary rounded-pill text-white py-3 px-5 wow fadeInUp" data-wow-delay="0.7s" href="#">More Details</a>
+                        <a asp-controller="Services"
+                           asp-action="Index"
+                           class="btn btn-primary border-secondary rounded-pill text-white py-3 px-5 wow fadeInUp"
+                           data-wow-delay="0.7s">
+                            More Details
+                        </a>
                     </div>
                 </div>
             </div>
@@ -30,7 +35,12 @@
                         <p class="text-white mb-4 mb-md-5 fs-5 wow fadeInUp" data-wow-delay="0.5s">
                             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
                         </p>
-                        <a class="btn btn-primary border-secondary rounded-pill text-white py-3 px-5 wow fadeInUp" data-wow-delay="0.7s" href="#">More Details</a>
+                        <a asp-controller="Services"
+                           asp-action="Index"
+                           class="btn btn-primary border-secondary rounded-pill text-white py-3 px-5 wow fadeInUp"
+                           data-wow-delay="0.7s">
+                            More Details
+                        </a>
                     </div>
                 </div>
             </div>
@@ -289,22 +299,16 @@
                         </div>
 
                         <!-- Country Flag -->
-                        <div class="country-flag">
+                        @if (!string.IsNullOrEmpty(country.FlagImageUrl))
+                        {
+                            <div class="country-flag">
 
-                            @if (!string.IsNullOrEmpty(country.FlagImageUrl))
-                            {
                                 <img src="@country.FlagImageUrl"
                                      class="img-fluid rounded-circle"
                                      alt="@country.Name Flag">
-                            }
-                            else
-                            {
-                                <img src="~/img/default-flag.png"
-                                     class="img-fluid rounded-circle"
-                                     alt="@country.Name Flag">
-                            }
 
-                        </div>
+                            </div>
+                        }
 
                         <!-- Country Name -->
                         <div class="country-name">
@@ -404,7 +408,12 @@
                 </div>
             </div>
             <div class="col-12">
-                <a class="btn btn-primary border-secondary rounded-pill py-3 px-5 wow fadeInUp" data-wow-delay="0.1s" href="#">More Features</a>
+                <a asp-controller="Home"
+                   asp-action="About"
+                   class="btn btn-primary border-secondary rounded-pill py-3 px-5 wow fadeInUp"
+                   data-wow-delay="0.1s">
+                    More Features
+                </a>
             </div>
         </div>
     </div>
@@ -420,77 +429,94 @@
             <h1 class="display-5 mb-4">What Our Clients Say</h1>
             <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat deleniti amet at atque sequi quibusdam cumque itaque repudiandae temporibus, eius nam mollitia voluptas maxime veniam necessitatibus saepe in ab? Repellat!</p>
         </div>
+
+     
         <div class="owl-carousel testimonial-carousel wow zoomInDown" data-wow-delay="0.2s">
-            <div class="testimonial-item">
-                <div class="testimonial-content p-4 mb-5">
-                    <p class="fs-5 mb-0">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitati eiusmod tempor incididunt.
-                    </p>
-                    <div class="d-flex justify-content-end">
-                        <i class="fas fa-star text-secondary"></i>
-                        <i class="fas fa-star text-secondary"></i>
-                        <i class="fas fa-star text-secondary"></i>
-                        <i class="fas fa-star text-secondary"></i>
-                        <i class="fas fa-star text-secondary"></i>
+
+            @foreach (var review in Model.Reviews)
+            {
+                <div class="testimonial-item">
+
+                    <div class="testimonial-content p-4 mb-5">
+
+                        <div style="
+        height:120px;
+        overflow-y:auto;
+        padding-right:10px;
+        text-align:left;
+    ">
+                            <p class="fs-5 mb-0">
+                                @review.Comment
+                            </p>
+                        </div>
+
+                        <div class="d-flex justify-content-end">
+
+                            @for (int i = 0; i < review.Rating; i++)
+                            {
+                                <i class="fas fa-star text-secondary"></i>
+                            }
+
+                        </div>
+
                     </div>
+
+
+                    <div class="d-flex">
+
+                        <div class="rounded-circle me-4"
+                             style="width:100px;height:100px;">
+
+                            @if (!string.IsNullOrEmpty(review.ImageUrl))
+                            {
+                                <img class="img-fluid rounded-circle"
+                                     src="@review.ImageUrl"
+                                     alt="@review.Name">
+                            }
+                            else
+                            {
+                                <img class="img-fluid rounded-circle"
+                                     src="~/img/testimonial-1.jpg"
+                                     alt="@review.Name">
+                            }
+
+                        </div>
+
+
+                        <div class="my-auto">
+
+                            <h5>
+                                @review.Name
+                            </h5>
+
+                            <p class="mb-0">
+                                @review.Country
+                            </p>
+
+                        </div>
+
+                    </div>
+
                 </div>
-                <div class="d-flex">
-                    <div class="rounded-circle me-4" style="width: 100px; height: 100px;">
-                        <img class="img-fluid rounded-circle" src="img/testimonial-1.jpg" alt="img">
-                    </div>
-                    <div class="my-auto">
-                        <h5>Person Name</h5>
-                        <p class="mb-0">Profession</p>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-item">
-                <div class="testimonial-content p-4 mb-5">
-                    <p class="fs-5 mb-0">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitati eiusmod tempor incididunt.
-                    </p>
-                    <div class="d-flex justify-content-end">
-                        <i class="fas fa-star text-secondary"></i>
-                        <i class="fas fa-star text-secondary"></i>
-                        <i class="fas fa-star text-secondary"></i>
-                        <i class="fas fa-star text-secondary"></i>
-                        <i class="fas fa-star text-secondary"></i>
-                    </div>
-                </div>
-                <div class="d-flex">
-                    <div class="rounded-circle me-4" style="width: 100px; height: 100px;">
-                        <img class="img-fluid rounded-circle" src="img/testimonial-2.jpg" alt="img">
-                    </div>
-                    <div class="my-auto">
-                        <h5>Person Name</h5>
-                        <p class="mb-0">Profession</p>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-item">
-                <div class="testimonial-content p-4 mb-5">
-                    <p class="fs-5 mb-0">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitati eiusmod tempor incididunt.
-                    </p>
-                    <div class="d-flex justify-content-end">
-                        <i class="fas fa-star text-secondary"></i>
-                        <i class="fas fa-star text-secondary"></i>
-                        <i class="fas fa-star text-secondary"></i>
-                        <i class="fas fa-star text-secondary"></i>
-                        <i class="fas fa-star text-secondary"></i>
-                    </div>
-                </div>
-                <div class="d-flex">
-                    <div class="rounded-circle me-4" style="width: 100px; height: 100px;">
-                        <img class="img-fluid rounded-circle" src="img/testimonial-3.jpg" alt="img">
-                    </div>
-                    <div class="my-auto">
-                        <h5>Person Name</h5>
-                        <p class="mb-0">Profession</p>
-                    </div>
-                </div>
-            </div>
+            }
+
         </div>
     </div>
 </div>
+
+<!-- Add Review Button Start -->
+<div class="text-center mt-5 wow fadeInUp" data-wow-delay="0.2s">
+
+    <a asp-controller="Reviews"
+       asp-action="Create"
+       class="btn btn-primary border-secondary rounded-pill py-3 px-5">
+
+        Add Your Review
+
+    </a>
+
+</div>
+<!-- Add Review Button End -->
 <!-- Testimonial End -->
+
+

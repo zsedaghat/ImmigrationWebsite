@@ -5,36 +5,21 @@
 }
 
 <!-- Page Header Start -->
-<div class="container-fluid bg-breadcrumb">
-    <div class="container text-center py-5" style="max-width: 900px;">
+<div class="container-fluid page-header py-5"
+     style="background: linear-gradient(rgba(0, 0, 0, .55), rgba(0, 0, 0, .55)), url('/img/office-3.jpg') center center / cover no-repeat;">
 
-        <h4 class="text-white display-4 mb-4">
+    <div class="container py-5">
+
+        <h1 class="display-3 text-white mb-3 internal-page-title">
             @Model.Name
-        </h4>
+        </h1>
 
-        <ol class="breadcrumb d-flex justify-content-center mb-0">
-
-            <li class="breadcrumb-item">
-                <a asp-controller="Home"
-                   asp-action="Index">
-                    Home
-                </a>
-            </li>
-
-            <li class="breadcrumb-item">
-                <a asp-controller="Countries"
-                   asp-action="Index">
-                    Countries
-                </a>
-            </li>
-
-            <li class="breadcrumb-item active text-primary">
-                @Model.Name
-            </li>
-
-        </ol>
+        <p class="text-white mb-0 internal-page-subtitle">
+            Immigration and visa information for @Model.Name.
+        </p>
 
     </div>
+
 </div>
 <!-- Page Header End -->
 <!-- Country Details Start -->
@@ -45,7 +30,7 @@
         <div class="row g-5 align-items-center">
 
             <!-- Country Image -->
-            <div class="col-lg-6 wow fadeInLeft"
+            <div class="col-lg-6 wow fadeInDown"
                  data-wow-delay="0.1s">
 
                 <div class="position-relative">
@@ -63,7 +48,6 @@
                              alt="@Model.Name">
                     }
 
-
                     <!-- Flag -->
                     @if (!string.IsNullOrEmpty(Model.FlagImageUrl))
                     {
@@ -74,12 +58,12 @@
                                  alt="@Model.Name Flag"
                                  class="rounded-circle shadow"
                                  style="
-                    width:80px;
-                    height:80px;
-                    object-fit:cover;
-                    border:4px solid white;
-                    background:white;
-                 ">
+                                         width:80px;
+                                         height:80px;
+                                         object-fit:cover;
+                                         border:4px solid white;
+                                         background:white;
+                                     ">
 
                         </div>
                     }
@@ -90,7 +74,7 @@
 
 
             <!-- Country Information -->
-            <div class="col-lg-6 wow fadeInRight"
+            <div class="col-lg-6 wow fadeInDown"
                  data-wow-delay="0.3s">
 
                 <div class="mb-4">
@@ -150,7 +134,7 @@
 
                 <!-- Consultation Button -->
                 <a asp-controller="Home"
-                   asp-action="Consultation"
+                   asp-action="Contact"
                    class="btn btn-primary border-secondary rounded-pill py-3 px-5">
 
                     Request a Consultation
@@ -178,12 +162,16 @@
 
     <div class="container py-5">
 
-        <div class="section-title text-center mb-5">
+        <!-- Section Title -->
+        <div class="section-title text-center mb-5 wow fadeInDown"
+             data-wow-delay="0.1s">
 
             <div class="sub-style">
+
                 <h5 class="sub-title text-primary px-3">
                     WHY CHOOSE US
                 </h5>
+
             </div>
 
             <h1 class="display-5 mb-4">
@@ -201,7 +189,8 @@
         <div class="row g-4">
 
             <!-- Visa Assistance -->
-            <div class="col-md-6 col-lg-4">
+            <div class="col-md-6 col-lg-4 wow fadeInDown"
+                 data-wow-delay="0.2s">
 
                 <div class="bg-white rounded p-4 h-100 shadow-sm text-center">
 
@@ -226,7 +215,8 @@
 
 
             <!-- Expert Guidance -->
-            <div class="col-md-6 col-lg-4">
+            <div class="col-md-6 col-lg-4 wow fadeInDown"
+                 data-wow-delay="0.4s">
 
                 <div class="bg-white rounded p-4 h-100 shadow-sm text-center">
 
@@ -250,8 +240,9 @@
             </div>
 
 
-            <!-- Fast Process -->
-            <div class="col-md-6 col-lg-4">
+            <!-- Faster Process -->
+            <div class="col-md-6 col-lg-4 wow fadeInDown"
+                 data-wow-delay="0.6s">
 
                 <div class="bg-white rounded p-4 h-100 shadow-sm text-center">
 

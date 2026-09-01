@@ -21,4 +21,6 @@ public class ApplicationDbContext : IdentityDbContext
     public DbSet<ConsultationRequest> ConsultationRequests { get; set; }
 
     public DbSet<ContactMessage> ContactMessages { get; set; }
+
+    public DbSet<Review> Reviews { get; set; }
 }

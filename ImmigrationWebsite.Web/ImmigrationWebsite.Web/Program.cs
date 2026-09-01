@@ -33,6 +33,7 @@ builder.Services.AddScoped<IServiceManager, ServiceManager>();
 builder.Services.AddScoped<IBlogPostManager, BlogPostManager>();
 builder.Services.AddScoped <IConsultationRequestManager, ConsultationRequestManager>();
 builder.Services.AddScoped<IContactMessageManager,ContactMessageManager>();
+builder.Services.AddScoped<IReviewService, ReviewService>();
 
 var app = builder.Build();
 

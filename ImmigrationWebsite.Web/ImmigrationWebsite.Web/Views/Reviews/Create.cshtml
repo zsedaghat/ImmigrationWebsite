@@ -1,0 +1,214 @@
+﻿@model ImmigrationWebsite.Web.Models.ViewModels.ReviewCreateViewModel
+
+@{
+    ViewData["Title"] = "Submit Review";
+}
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-8">
+
+            <div class="bg-light rounded p-5">
+
+                <h2 class="text-center mb-4">
+                    Share Your Experience
+                </h2>
+
+
+                    <form asp-action="Create"
+                          method="post"
+                          enctype="multipart/form-data">
+
+                        @Html.AntiForgeryToken()
+
+                    <div class="mb-3">
+                        <label class="form-label">
+                            Name
+                        </label>
+
+                        <input asp-for="Name"
+                               class="form-control" />
+
+                        <span asp-validation-for="Name"
+                              class="text-danger"></span>
+                    </div>
+
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Destination Country
+                        </label>
+
+                        <input asp-for="Country"
+                               class="form-control" />
+
+                    </div>
+
+
+                    <div class="mb-3">
+
+                        <label class="form-label d-block">
+                            Rating
+                        </label>
+
+
+                        <div class="rating">
+
+                            <input asp-for="Rating"
+                                   type="hidden"
+                                   id="ratingValue" />
+
+
+                            <span class="star" data-value="1">★</span>
+                            <span class="star" data-value="2">★</span>
+                            <span class="star" data-value="3">★</span>
+                            <span class="star" data-value="4">★</span>
+                            <span class="star" data-value="5">★</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Your Experience
+                        </label>
+
+                        <textarea asp-for="Comment"
+                                  class="form-control"
+                                  rows="5">
+                        </textarea>
+
+                        <span asp-validation-for="Comment"
+                              class="text-danger"></span>
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Your Photo (Optional)
+                        </label>
+
+                        <input asp-for="Image"
+                               type="file"
+                               class="form-control"
+                               accept="image/*" />
+
+                    </div>
+
+
+                    <button type="submit"
+                            class="btn btn-primary w-100">
+
+                        Submit Review
+
+                    </button>
+
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<style>
+
+    .rating {
+        direction: ltr;
+        font-size: 40px;
+        cursor: pointer;
+    }
+
+
+    .star {
+        color: #ccc;
+        transition: .2s;
+    }
+
+
+    .star.active {
+        color: #ffc107;
+    }
+
+
+</style>
+
+@section Scripts {
+    <script>
+
+        const stars = document.querySelectorAll(".star");
+        const ratingValue = document.getElementById("ratingValue");
+
+        let selectedRating = 0;
+
+
+        function setStars(value) {
+
+            stars.forEach(star => {
+
+                if (star.dataset.value <= value) {
+                    star.classList.add("active");
+                }
+                else {
+                    star.classList.remove("active");
+                }
+
+            });
+
+        }
+
+
+        stars.forEach(star => {
+
+
+            // وقتی موس روی ستاره می‌رود
+            star.addEventListener("mouseenter", function () {
+
+                let value = this.dataset.value;
+
+                setStars(value);
+
+            });
+
+
+
+            // وقتی موس خارج می‌شود
+            star.addEventListener("mouseleave", function () {
+
+                setStars(selectedRating);
+
+            });
+
+
+
+            // وقتی کلیک می‌کند
+            star.addEventListener("click", function () {
+
+               selectedRating = Number(this.dataset.value);
+
+                ratingValue.value = selectedRating;
+
+                setStars(selectedRating);
+
+            });
+
+
+        });
+
+
+    </script>
+
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
