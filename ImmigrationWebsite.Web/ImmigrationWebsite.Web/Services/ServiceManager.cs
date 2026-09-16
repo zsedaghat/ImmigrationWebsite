@@ -47,6 +47,13 @@ public class ServiceManager : IServiceManager
             .FirstOrDefaultAsync(x => x.Id == id);
     }
 
+
+    public async Task<Service?> GetBySlugAsync(string slug)
+    {
+        return await _context.Services
+            .FirstOrDefaultAsync(x => x.Slug == slug);
+    }
+
     public async Task AddAsync(Service service)
     {
         _context.Services.Add(service);

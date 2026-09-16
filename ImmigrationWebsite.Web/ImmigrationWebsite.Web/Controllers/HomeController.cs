@@ -41,7 +41,7 @@ namespace ImmigrationWebsite.Web.Controllers
                 .ToList();
 
 
-            var services = await _serviceManager.GetPagedAsync(1, 6);
+            var services = await _serviceManager.GetPagedAsync(1, 10);
 
             services.Items = services.Items
                 .Where(x => x.IsActive)
@@ -101,7 +101,8 @@ namespace ImmigrationWebsite.Web.Controllers
             return RedirectToAction(nameof(Contact));
         }
 
-        public IActionResult Privacy()
+        [HttpGet("/privacy-policy")]
+        public IActionResult PrivacyPolicy()
         {
             return View();
         }
@@ -118,5 +119,13 @@ namespace ImmigrationWebsite.Web.Controllers
                     ?? HttpContext.TraceIdentifier
             });
         }
+
+        [HttpGet("/disclaimer")]
+        public IActionResult Disclaimer()
+        {
+            return View();
+        }
+
+
     }
 }

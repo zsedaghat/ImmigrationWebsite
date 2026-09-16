@@ -3,18 +3,25 @@
 <div class="footer-item d-flex flex-column">
 
     <h4 class="text-secondary mb-4">
-        Our Services
+        SERVICES
     </h4>
 
-    @foreach (var service in Model)
-    {
-        <a asp-controller="Services"
-           asp-action="Details"
-           asp-route-id="@service.Id">
+    @{
+        var excludedSlugs = new[]
+        {
+            "canada",
+            "travel-visas",
+            "education",
+            "resources"
+        };
+    }
 
+    @foreach (var service in Model.Where(x =>
+        x.Slug == null || !excludedSlugs.Contains(x.Slug)))
+    {
+        <a href="/services/@service.Id">
             <i class="fas fa-angle-right me-2"></i>
             @service.Title
-
         </a>
     }
 

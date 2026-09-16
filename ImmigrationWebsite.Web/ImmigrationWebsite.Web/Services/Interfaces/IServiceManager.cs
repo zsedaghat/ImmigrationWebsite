@@ -9,6 +9,7 @@ namespace ImmigrationWebsite.Web.Services.Interfaces
      int pageNumber,
      int pageSize);
         Task<Service?> GetByIdAsync(int id);
+        Task<Service?> GetBySlugAsync(string slug);
         Task AddAsync(Service service);
         Task UpdateAsync(Service service);
         Task DeleteAsync(int id);

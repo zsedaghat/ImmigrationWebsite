@@ -1,88 +1,237 @@
-﻿@model ImmigrationWebsite.Web.Models.ViewModels.HomeViewModel
+﻿
+@model ImmigrationWebsite.Web.Models.ViewModels.HomeViewModel
 
-   <!-- Carousel Start -->
+<!-- =========================================================
+     HERO / CAROUSEL START
+     ========================================================= -->
+
 <div class="carousel-header">
-    <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
+    <div id="carouselId"
+         class="carousel slide"
+         data-bs-ride="carousel">
+
         <ol class="carousel-indicators">
-            <li data-bs-target="#carouselId" data-bs-slide-to="0" class="active"></li>
-            <li data-bs-target="#carouselId" data-bs-slide-to="1"></li>
+            <li data-bs-target="#carouselId"
+                data-bs-slide-to="0"
+                class="active">
+            </li>
+
+            <li data-bs-target="#carouselId"
+                data-bs-slide-to="1">
+            </li>
         </ol>
+
+
         <div class="carousel-inner" role="listbox">
+
+            <!-- =================================================
+                 SLIDE 1
+                 ================================================= -->
+
             <div class="carousel-item active">
-                <img src="img/carousel-1.jpg" class="img-fluid" alt="Image">
+
+                <img src="~/img/carousel-1.jpg"
+                     class="img-fluid"
+                     alt="Canada and international opportunities">
+
                 <div class="carousel-caption">
-                    <div class="text-center p-4" style="max-width: 900px;">
-                        <h4 class="text-white text-uppercase fw-bold mb-3 mb-md-4 wow fadeInUp" data-wow-delay="0.1s">Solution For All Type Of Visas</h4>
-                        <h1 class="display-1 text-capitalize text-white mb-3 mb-md-4 wow fadeInUp" data-wow-delay="0.3s">Immigration Process Starts Here!</h1>
-                        <p class="text-white mb-4 mb-md-5 fs-5 wow fadeInUp" data-wow-delay="0.5s">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+
+                    <div class="text-center p-4"
+                         style="max-width: 900px;">
+
+                        <h4 class="gb-hero-label text-uppercase fw-bold mb-3 mb-md-4 wow fadeInUp"
+                            data-wow-delay="0.1s">
+                            WELCOME TO GLOBAL BRIDGE
+                        </h4>
+
+                        <h1 class="display-1 text-capitalize text-white gb-hero-title mb-3 mb-md-4 wow fadeInUp"
+                            data-wow-delay="0.3s">
+                            Your Bridge to New Opportunities
+                        </h1>
+
+                        <p class="gb-hero-tagline mb-3 fs-5 fw-semibold wow fadeInUp"
+                           data-wow-delay="0.4s">
+                            Practical Support. Brighter Opportunities. Everywhere.
                         </p>
-                        <a asp-controller="Services"
-                           asp-action="Index"
-                           class="btn btn-primary border-secondary rounded-pill text-white py-3 px-5 wow fadeInUp"
-                           data-wow-delay="0.7s">
-                            More Details
-                        </a>
+
+                        <p class="text-white mb-4 mb-md-5 fs-5 gb-hero-description wow fadeInUp"
+                           data-wow-delay="0.5s">
+                            Personalized administrative and practical support for
+                            individuals, newcomers, students and families — from
+                            applications and settlement to education, employment,
+                            housing, documents and international travel.
+                        </p>
+
+                        <div class="d-flex justify-content-center flex-wrap gap-3 wow fadeInUp"
+                             data-wow-delay="0.7s">
+
+                            <a asp-controller="Services"
+                               asp-action="Index"
+                               class="btn btn-primary rounded-pill py-3 px-5 gb-hero-btn">
+                                EXPLORE OUR SERVICES
+                            </a>
+
+                            <a asp-controller="Home"
+                               asp-action="Contact"
+                               class="btn btn-light rounded-pill py-3 px-5 gb-contact-btn">
+                                CONTACT US
+                            </a>
+
+                        </div>
+
                     </div>
+
                 </div>
             </div>
+
+
+            <!-- =================================================
+                 SLIDE 2
+                 ================================================= -->
+
             <div class="carousel-item">
-                <img src="img/carousel-2.jpg" class="img-fluid" alt="Image">
+
+                <img src="~/img/carousel-2.jpg"
+                     class="img-fluid"
+                     alt="Global opportunities for families, students and professionals">
+
                 <div class="carousel-caption">
-                    <div class="text-center p-4" style="max-width: 900px;">
-                        <h5 class="text-white text-uppercase fw-bold mb-3 mb-md-4 wow fadeInUp" data-wow-delay="0.1s">Solution For All Type Of Visas</h5>
-                        <h1 class="display-1 text-capitalize text-white mb-3 mb-md-4 wow fadeInUp" data-wow-delay="0.3s">Best Visa Immigrations Services</h1>
-                        <p class="text-white mb-4 mb-md-5 fs-5 wow fadeInUp" data-wow-delay="0.5s">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+
+                    <div class="text-center p-4"
+                         style="max-width: 900px;">
+
+                        <h4 class="gb-hero-label text-uppercase fw-bold mb-3 mb-md-4 wow fadeInUp"
+                            data-wow-delay="0.1s">
+                            WELCOME TO GLOBAL BRIDGE
+                        </h4>
+
+                        <h1 class="display-1 text-capitalize text-white gb-hero-title mb-3 mb-md-4 wow fadeInUp"
+                            data-wow-delay="0.3s">
+                            Your Bridge to New Opportunities
+                        </h1>
+
+                        <p class="gb-hero-tagline mb-3 fs-5 fw-semibold wow fadeInUp"
+                           data-wow-delay="0.4s">
+                            Practical Support. Brighter Opportunities. Everywhere.
                         </p>
-                        <a asp-controller="Services"
-                           asp-action="Index"
-                           class="btn btn-primary border-secondary rounded-pill text-white py-3 px-5 wow fadeInUp"
-                           data-wow-delay="0.7s">
-                            More Details
-                        </a>
+
+                        <p class="text-white mb-4 mb-md-5 fs-5 gb-hero-description wow fadeInUp"
+                           data-wow-delay="0.5s">
+                            Personalized administrative and practical support for
+                            individuals, newcomers, students and families — from
+                            applications and settlement to education, employment,
+                            housing, documents and international travel.
+                        </p>
+
+                        <div class="d-flex justify-content-center flex-wrap gap-3 wow fadeInUp"
+                             data-wow-delay="0.7s">
+
+                            <a asp-controller="Services"
+                               asp-action="Index"
+                               class="btn btn-primary rounded-pill py-3 px-5 gb-hero-btn">
+                                EXPLORE OUR SERVICES
+                            </a>
+
+                            <a asp-controller="Home"
+                               asp-action="Contact"
+                               class="btn btn-light rounded-pill py-3 px-5 gb-contact-btn">
+                                CONTACT US
+                            </a>
+
+                        </div>
+
                     </div>
+
                 </div>
             </div>
+
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon bg-secondary wow fadeInLeft" data-wow-delay="0.2s" aria-hidden="false"></span>
-            <span class="visually-hidden-focusable">Previous</span>
+
+
+        <!-- =================================================
+             CAROUSEL CONTROLS
+             ================================================= -->
+
+        <button class="carousel-control-prev"
+                type="button"
+                data-bs-target="#carouselId"
+                data-bs-slide="prev">
+
+            <span class="carousel-control-prev-icon bg-secondary wow fadeInLeft"
+                  data-wow-delay="0.2s">
+            </span>
+
+            <span class="visually-hidden">
+                Previous
+            </span>
+
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselId" data-bs-slide="next">
-            <span class="carousel-control-next-icon bg-secondary wow fadeInRight" data-wow-delay="0.2s" aria-hidden="false"></span>
-            <span class="visually-hidden-focusable">Next</span>
+
+
+        <button class="carousel-control-next"
+                type="button"
+                data-bs-target="#carouselId"
+                data-bs-slide="next">
+
+            <span class="carousel-control-next-icon bg-secondary wow fadeInRight"
+                  data-wow-delay="0.2s">
+            </span>
+
+            <span class="visually-hidden">
+                Next
+            </span>
+
         </button>
+
     </div>
 </div>
+
 <!-- Carousel End -->
-<!-- Services Start -->
+<!-- =========================================================
+     SERVICES START
+     ========================================================= -->
+
 <div class="container-fluid service overflow-hidden pt-5">
+
+
     <div class="container py-5">
 
         <div class="section-title text-center mb-5 wow fadeInUp"
              data-wow-delay="0.1s">
 
             <div class="sub-style">
+
                 <h5 class="sub-title text-primary px-3">
-                    Visa Categories
+                    OUR SERVICES
                 </h5>
+
             </div>
 
             <h1 class="display-5 mb-4">
-                Enabling Your Immigration Successfully
+                How Can We Help?
             </h1>
 
             <p class="mb-0">
-                Explore our immigration and visa services
-                designed to make your immigration process easier.
+                Practical support for many of life's important steps — all in one place.
             </p>
 
         </div>
 
+
         <div class="row g-4">
 
-            @foreach (var service in Model.Services)
+            @{
+                var excludedSlugs = new[]
+                {
+                        "canada",
+                        "travel-visas",
+                        "education",
+                        "resources"
+                        };
+            }
+
+            @foreach (var service in Model.Services.Where(x =>
+                        x.Slug == null || !excludedSlugs.Contains(x.Slug)))
             {
                 <div class="col-lg-6 col-xl-4 wow fadeInUp"
                      data-wow-delay="0.1s">
@@ -91,13 +240,14 @@
 
                         <div class="service-inner">
 
-                            <!-- Image -->
+                            <!-- SERVICE IMAGE -->
+
                             <div class="service-img">
 
                                 @if (!string.IsNullOrEmpty(service.ImageUrl))
                                 {
                                     <img src="@service.ImageUrl"
-                                         class="img-fluid w-100 rounded"
+                                         class="img-fluid w-100 rounded service-card-image"
                                          alt="@service.Title">
                                 }
                                 else
@@ -108,19 +258,17 @@
                                 }
 
                             </div>
-                            <!-- Image End -->
 
+
+                            <!-- SERVICE TITLE -->
 
                             <div class="service-title">
 
-                                <!-- Title -->
                                 <div class="service-title-name">
 
                                     <div class="bg-primary text-center rounded p-3 mx-5 mb-4">
 
-                                        <a asp-controller="Services"
-                                           asp-action="Details"
-                                           asp-route-id="@service.Id"
+                                        <a href="/services/@service.Id"
                                            class="h4 text-white mb-0">
 
                                             @service.Title
@@ -129,23 +277,22 @@
 
                                     </div>
 
-                                    <a asp-controller="Services"
-                                       asp-action="Details"
-                                       asp-route-id="@service.Id"
+
+                                    <a href="/services/@service.Id"
                                        class="btn bg-light text-secondary rounded-pill py-3 px-5 mb-4">
 
-                                        Explore More
+                                        LEARN MORE
 
                                     </a>
 
                                 </div>
-                                <!-- Title End -->
-                                <!-- Content -->
+
+
+                                <!-- SERVICE CONTENT -->
+
                                 <div class="service-content pb-4">
 
-                                    <a asp-controller="Services"
-                                       asp-action="Details"
-                                       asp-route-id="@service.Id">
+                                    <a href="/services/@service.Id">
 
                                         <h4 class="text-white mb-4 py-3">
                                             @service.Title
@@ -153,25 +300,23 @@
 
                                     </a>
 
+
                                     <div class="px-4">
 
                                         <p class="mb-4">
                                             @service.Description
                                         </p>
 
-                                        <a asp-controller="Services"
-                                           asp-action="Details"
-                                           asp-route-id="@service.Id"
+                                        <a href="/services/@service.Id"
                                            class="btn btn-primary border-secondary rounded-pill py-3 px-5">
 
-                                            Explore More
+                                            LEARN MORE
 
                                         </a>
 
                                     </div>
 
                                 </div>
-                                <!-- Content End -->
 
                             </div>
 
@@ -185,93 +330,128 @@
         </div>
 
     </div>
+
+
 </div>
+
 <!-- Services End -->
-<!-- About Start -->
+<!-- =========================================================
+     ABOUT START
+     ========================================================= -->
+
 <div class="container-fluid py-5">
+
     <div class="container py-5">
-        <div class="row g-5">
-            <div class="col-xl-5 wow fadeInLeft" data-wow-delay="0.1s">
-                <div class="bg-light rounded">
-                    <img src="img/about-2.png" class="img-fluid w-100" style="margin-bottom: -7px;" alt="Image">
-                    <img src="img/about-3.jpg" class="img-fluid w-100 border-bottom border-5 border-primary" style="border-top-right-radius: 300px; border-top-left-radius: 300px;" alt="Image">
+
+        <div class="row g-5 align-items-center">
+
+
+            <!-- IMAGE -->
+
+            <div class="col-xl-5 wow fadeInLeft"
+                 data-wow-delay="0.1s">
+
+                <div class="bg-light rounded overflow-hidden">
+
+                    <img src="~/img/about-2.jpg"
+                         class="img-fluid w-100"
+                         alt="Global Bridge Support Services">
+
                 </div>
+
             </div>
-            <div class="col-xl-7 wow fadeInRight" data-wow-delay="0.3s">
-                <h5 class="sub-title pe-3">About the company</h5>
-                <h1 class="display-5 mb-4">We’re Trusted Immigration Consultant Agency.</h1>
-                <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt architecto consectetur iusto perferendis blanditiis assumenda dignissimos, commodi fuga culpa earum explicabo libero sint est mollitia saepe! Sequi asperiores rerum nemo!</p>
-                <div class="row gy-4 align-items-center">
-                    <div class="col-12 col-sm-6 d-flex align-items-center">
-                        <i class="fas fa-map-marked-alt fa-3x text-secondary"></i>
-                        <h5 class="ms-4">Best Immigration Resources</h5>
-                    </div>
-                    <div class="col-12 col-sm-6 d-flex align-items-center">
-                        <i class="fas fa-passport fa-3x text-secondary"></i>
-                        <h5 class="ms-4">Return Visas Availabile</h5>
-                    </div>
-                    <div class="col-4 col-md-3">
-                        <div class="bg-light text-center rounded p-3">
-                            <div class="mb-2">
-                                <i class="fas fa-ticket-alt fa-4x text-primary"></i>
-                            </div>
-                            <h1 class="display-5 fw-bold mb-2">34</h1>
-                            <p class="text-muted mb-0">Years of Experience</p>
-                        </div>
-                    </div>
-                    <div class="col-8 col-md-9">
-                        <div class="mb-5">
-                            <p class="text-primary h6 mb-3"><i class="fa fa-check-circle text-secondary me-2"></i> Offer 100 % Genuine Assistance</p>
-                            <p class="text-primary h6 mb-3"><i class="fa fa-check-circle text-secondary me-2"></i> It’s Faster & Reliable Execution</p>
-                            <p class="text-primary h6 mb-3"><i class="fa fa-check-circle text-secondary me-2"></i> Accurate & Expert Advice</p>
-                        </div>
-                        <div class="d-flex flex-wrap">
-                            <div id="phone-tada" class="d-flex align-items-center justify-content-center me-4">
-                                <a href="" class="position-relative wow tada" data-wow-delay=".9s">
-                                    <i class="fa fa-phone-alt text-primary fa-3x"></i>
-                                    <div class="position-absolute" style="top: 0; left: 25px;">
-                                        <span><i class="fa fa-comment-dots text-secondary"></i></span>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="d-flex flex-column justify-content-center">
-                                <span class="text-primary">Have any questions?</span>
-                                <span class="text-secondary fw-bold fs-5" style="letter-spacing: 2px;">Free: +0123 456 7890</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+
+            <!-- CONTENT -->
+
+            <div class="col-xl-7 wow fadeInRight"
+                 data-wow-delay="0.3s">
+
+                <h5 class="sub-title pe-3">
+                    ABOUT GLOBAL BRIDGE
+                </h5>
+
+
+                <h1 class="display-5 mb-4">
+                    More Than Forms. Support for the Journey Ahead.
+                </h1>
+
+
+                <p class="mb-4">
+                    Global Bridge Support Services provides personalized administrative
+                    and practical assistance to individuals and families navigating
+                    important processes in Canada and internationally.
+                </p>
+
+
+                <p class="mb-4">
+                    From organizing applications and documents to settlement, education,
+                    employment, housing, travel and everyday services, our goal is to make
+                    complicated processes easier to understand and manage.
+                </p>
+
+
+                <p class="mb-4">
+                    Our approach is personal and practical. We work with clients step
+                    by step, helping them stay organized, informed and prepared
+                    throughout the administrative process.
+                </p>
+
+
+                <a asp-controller="Home"
+                   asp-action="About"
+                   class="btn btn-primary border-secondary rounded-pill py-3 px-5">
+
+                    ABOUT GLOBAL BRIDGE
+
+                </a>
+
             </div>
+
         </div>
+
     </div>
+
 </div>
+
 <!-- About End -->
-<!-- Countries We Offer Start -->
+<!-- =========================================================
+     COUNTRIES START
+     ========================================================= -->
+
 <div class="container-fluid country overflow-hidden py-5">
+
     <div class="container">
+
 
         <div class="section-title text-center wow fadeInUp"
              data-wow-delay="0.1s"
              style="margin-bottom: 70px;">
 
             <div class="sub-style">
+
                 <h5 class="sub-title text-primary px-3">
                     COUNTRIES WE OFFER
                 </h5>
+
             </div>
 
+
             <h1 class="display-5 mb-4">
-                Immigration & Visa Services Following Countries
+                Support Across Countries
             </h1>
 
+
             <p class="mb-0">
-                Explore the countries where we provide immigration
-                and visa services.
+                Explore the countries and destinations where Global Bridge
+                provides practical administrative and travel support.
             </p>
 
         </div>
 
+
         <div class="row g-4 text-center">
+
 
             @foreach (var country in Model.Countries)
             {
@@ -280,7 +460,9 @@
 
                     <div class="country-item">
 
-                        <!-- Country Image -->
+
+                        <!-- COUNTRY IMAGE -->
+
                         <div class="rounded overflow-hidden">
 
                             @if (!string.IsNullOrEmpty(country.ImageUrl))
@@ -298,7 +480,8 @@
 
                         </div>
 
-                        <!-- Country Flag -->
+
+                        <!-- COUNTRY FLAG -->
                         @if (!string.IsNullOrEmpty(country.FlagImageUrl))
                         {
                             <div class="country-flag">
@@ -310,7 +493,9 @@
                             </div>
                         }
 
-                        <!-- Country Name -->
+
+                        <!-- COUNTRY NAME -->
+
                         <div class="country-name">
 
                             <a asp-controller="Countries"
@@ -329,7 +514,9 @@
                 </div>
             }
 
-            <!-- More Countries -->
+
+            <!-- MORE COUNTRIES -->
+
             <div class="col-12">
 
                 <a asp-controller="Countries"
@@ -337,7 +524,7 @@
                    class="btn btn-primary border-secondary rounded-pill py-3 px-5 wow fadeInUp"
                    data-wow-delay="0.1s">
 
-                    More Countries
+                    MORE COUNTRIES
 
                 </a>
 
@@ -346,177 +533,381 @@
         </div>
 
     </div>
+
 </div>
-<!-- Countries We Offer End -->
-<!-- Features Start -->
+
+<!-- Countries End -->
+<!-- =========================================================
+     WHY GLOBAL BRIDGE START
+     ========================================================= -->
+
 <div class="container-fluid features overflow-hidden py-5">
+
     <div class="container">
-        <div class="section-title text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">
+
+
+        <div class="section-title text-center mb-5 wow fadeInUp"
+             data-wow-delay="0.1s">
+
             <div class="sub-style">
-                <h5 class="sub-title text-primary px-3">Why Choose Us</h5>
+
+                <h5 class="sub-title text-primary px-3">
+                    WHY GLOBAL BRIDGE?
+                </h5>
+
             </div>
-            <h1 class="display-5 mb-4">Offer Tailor Made Services That Our Client Requires</h1>
-            <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat deleniti amet at atque sequi quibusdam cumque itaque repudiandae temporibus, eius nam mollitia voluptas maxime veniam necessitatibus saepe in ab? Repellat!</p>
+
+
+            <h1 class="display-5 mb-4">
+                Practical Help. Personal Attention.
+            </h1>
+
+
+            <p class="mb-0">
+                We provide practical, personalized support to help you
+                understand and manage important administrative processes.
+            </p>
+
         </div>
+
+
         <div class="row g-4 justify-content-center text-center">
-            <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="feature-item text-center p-4">
+
+
+            <!-- PERSONALIZED SUPPORT -->
+
+            <div class="col-md-6 col-lg-6 col-xl-4 wow fadeInUp"
+                 data-wow-delay="0.1s">
+
+                <div class="feature-item text-center p-4 h-100">
+
                     <div class="feature-icon p-3 mb-4">
-                        <i class="fas fa-dollar-sign fa-4x text-primary"></i>
+
+                        <i class="fas fa-user-check fa-4x text-primary"></i>
+
                     </div>
+
+
                     <div class="feature-content d-flex flex-column">
-                        <h5 class="mb-3">Cost-Effective</h5>
-                        <p class="mb-3">Dolor, sit amet consectetur adipisicing elit. Soluta inventore cum accusamus,</p>
-                        <a class="btn btn-secondary rounded-pill" href="#">Read More<i class="fas fa-arrow-right ms-2"></i></a>
+
+                        <h5 class="mb-3">
+                            PERSONALIZED SUPPORT
+                        </h5>
+
+                        <p class="mb-0">
+                            Every client's needs and circumstances are different.
+                        </p>
+
                     </div>
+
                 </div>
+
             </div>
-            <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="feature-item text-center p-4">
+
+
+            <!-- STEP-BY-STEP -->
+
+            <div class="col-md-6 col-lg-6 col-xl-4 wow fadeInUp"
+                 data-wow-delay="0.3s">
+
+                <div class="feature-item text-center p-4 h-100">
+
                     <div class="feature-icon p-3 mb-4">
-                        <i class="fab fa-cc-visa fa-4x text-primary"></i>
+
+                        <i class="fas fa-tasks fa-4x text-primary"></i>
+
                     </div>
+
+
                     <div class="feature-content d-flex flex-column">
-                        <h5 class="mb-3">Visa Assistance</h5>
-                        <p class="mb-3">Dolor, sit amet consectetur adipisicing elit. Soluta inventore cum accusamus,</p>
-                        <a class="btn btn-secondary rounded-pill" href="#">Read More<i class="fas fa-arrow-right ms-2"></i></a>
+
+                        <h5 class="mb-3">
+                            STEP-BY-STEP ASSISTANCE
+                        </h5>
+
+                        <p class="mb-0">
+                            We make administrative processes easier to understand and manage.
+                        </p>
+
                     </div>
+
                 </div>
+
             </div>
-            <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="feature-item text-center p-4">
+
+
+            <!-- MANY SERVICES -->
+
+            <div class="col-md-6 col-lg-6 col-xl-4 wow fadeInUp"
+                 data-wow-delay="0.5s">
+
+                <div class="feature-item text-center p-4 h-100">
+
                     <div class="feature-icon p-3 mb-4">
-                        <i class="fas fa-atlas fa-4x text-primary"></i>
+
+                        <i class="fas fa-layer-group fa-4x text-primary"></i>
+
                     </div>
+
+
                     <div class="feature-content d-flex flex-column">
-                        <h5 class="mb-3">Faster Processing</h5>
-                        <p class="mb-3">Dolor, sit amet consectetur adipisicing elit. Soluta inventore cum accusamus,</p>
-                        <a class="btn btn-secondary rounded-pill" href="#">Read More<i class="fas fa-arrow-right ms-2"></i></a>
+
+                        <h5 class="mb-3">
+                            MANY SERVICES, ONE PLACE
+                        </h5>
+
+                        <p class="mb-0">
+                            From applications and housing to education,
+                            employment and everyday life.
+                        </p>
+
                     </div>
+
                 </div>
+
             </div>
-            <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.7s">
-                <div class="feature-item text-center p-4">
+
+
+            <!-- CONTINUED SUPPORT -->
+
+            <div class="col-md-6 col-lg-6 col-xl-4 wow fadeInUp"
+                 data-wow-delay="0.1s">
+
+                <div class="feature-item text-center p-4 h-100">
+
                     <div class="feature-icon p-3 mb-4">
-                        <i class="fas fa-users fa-4x text-primary"></i>
+
+                        <i class="fas fa-hands-helping fa-4x text-primary"></i>
+
                     </div>
+
+
                     <div class="feature-content d-flex flex-column">
-                        <h5 class="mb-3">Direct Interviews</h5>
-                        <p class="mb-3">Dolor, sit amet consectetur adipisicing elit. Soluta inventore cum accusamus,</p>
-                        <a class="btn btn-secondary rounded-pill" href="#">Read More<i class="fas fa-arrow-right ms-2"></i></a>
+
+                        <h5 class="mb-3">
+                            CONTINUED SUPPORT
+                        </h5>
+
+                        <p class="mb-0">
+                            We're here for more than one application or one stage
+                            of your journey.
+                        </p>
+
                     </div>
+
                 </div>
+
             </div>
-            <div class="col-12">
-                <a asp-controller="Home"
-                   asp-action="About"
-                   class="btn btn-primary border-secondary rounded-pill py-3 px-5 wow fadeInUp"
-                   data-wow-delay="0.1s">
-                    More Features
-                </a>
+
+
+            <!-- CANADA & INTERNATIONAL -->
+
+            <div class="col-md-6 col-lg-6 col-xl-4 wow fadeInUp"
+                 data-wow-delay="0.3s">
+
+                <div class="feature-item text-center p-4 h-100">
+
+                    <div class="feature-icon p-3 mb-4">
+
+                        <i class="fas fa-globe-americas fa-4x text-primary"></i>
+
+                    </div>
+
+
+                    <div class="feature-content d-flex flex-column">
+
+                        <h5 class="mb-3">
+                            CANADA &amp; INTERNATIONAL
+                        </h5>
+
+                        <p class="mb-0">
+                            Practical assistance at home and support for opportunities abroad.
+                        </p>
+
+                    </div>
+
+                </div>
+
             </div>
+
+
+            <!-- MULTILINGUAL -->
+
+            <div class="col-md-6 col-lg-6 col-xl-4 wow fadeInUp"
+                 data-wow-delay="0.5s">
+
+                <div class="feature-item text-center p-4 h-100">
+
+                    <div class="feature-icon p-3 mb-4">
+
+                        <i class="fas fa-language fa-4x text-primary"></i>
+
+                    </div>
+
+
+                    <div class="feature-content d-flex flex-column">
+
+                        <h5 class="mb-3">
+                            MULTILINGUAL SUPPORT
+                        </h5>
+
+                        <p class="mb-0">
+                            Support available in the languages provided by Global Bridge.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
+
     </div>
+
 </div>
-<!-- Features End -->
-<!-- Testimonial Start -->
-<div class="container-fluid testimonial overflow-hidden pb-5">
-    <div class="container py-5">
-        <div class="section-title text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">
-            <div class="sub-style">
-                <h5 class="sub-title text-primary px-3">OUR CLIENTS RIVIEWS</h5>
-            </div>
-            <h1 class="display-5 mb-4">What Our Clients Say</h1>
-            <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat deleniti amet at atque sequi quibusdam cumque itaque repudiandae temporibus, eius nam mollitia voluptas maxime veniam necessitatibus saepe in ab? Repellat!</p>
-        </div>
 
-     
-        <div class="owl-carousel testimonial-carousel wow zoomInDown" data-wow-delay="0.2s">
+<!-- Why Global Bridge End -->
+<!-- =========================================================
+     TESTIMONIALS / REVIEWS START
+     ========================================================= -->
+@if (Model.Reviews != null && Model.Reviews.Any())
+{
+    <div class="container-fluid testimonial overflow-hidden pb-5">
 
-            @foreach (var review in Model.Reviews)
-            {
-                <div class="testimonial-item">
-
-                    <div class="testimonial-content p-4 mb-5">
-
-                        <div style="
-        height:120px;
-        overflow-y:auto;
-        padding-right:10px;
-        text-align:left;
-    ">
-                            <p class="fs-5 mb-0">
-                                @review.Comment
-                            </p>
-                        </div>
-
-                        <div class="d-flex justify-content-end">
-
-                            @for (int i = 0; i < review.Rating; i++)
-                            {
-                                <i class="fas fa-star text-secondary"></i>
-                            }
-
-                        </div>
-
-                    </div>
+        <div class="container py-5">
 
 
-                    <div class="d-flex">
+            <div class="section-title text-center mb-5 wow fadeInUp"
+                 data-wow-delay="0.1s">
 
-                        <div class="rounded-circle me-4"
-                             style="width:100px;height:100px;">
+                <div class="sub-style">
 
-                            @if (!string.IsNullOrEmpty(review.ImageUrl))
-                            {
-                                <img class="img-fluid rounded-circle"
-                                     src="@review.ImageUrl"
-                                     alt="@review.Name">
-                            }
-                            else
-                            {
-                                <img class="img-fluid rounded-circle"
-                                     src="~/img/testimonial-1.jpg"
-                                     alt="@review.Name">
-                            }
-
-                        </div>
-
-
-                        <div class="my-auto">
-
-                            <h5>
-                                @review.Name
-                            </h5>
-
-                            <p class="mb-0">
-                                @review.Country
-                            </p>
-
-                        </div>
-
-                    </div>
+                    <h5 class="sub-title text-primary px-3">
+                        CLIENT REVIEWS
+                    </h5>
 
                 </div>
-            }
+
+
+                <h1 class="display-5 mb-4">
+                    What Our Clients Say
+                </h1>
+
+
+                <p class="mb-0">
+                    Hear from people who have experienced the practical support
+                    provided by Global Bridge.
+                </p>
+
+            </div>
+
+
+            <div class="owl-carousel testimonial-carousel wow zoomInDown"
+                 data-wow-delay="0.2s">
+
+
+                @foreach (var review in Model.Reviews)
+                {
+                    <div class="testimonial-item">
+
+
+                        <!-- REVIEW CONTENT -->
+
+                        <div class="testimonial-content p-4 mb-5">
+
+
+                            <div style="
+                                        height:120px;
+                                        overflow-y:auto;
+                                        padding-right:10px;
+                                        text-align:left;
+                                    ">
+
+                                <p class="fs-5 mb-0">
+                                    @review.Comment
+                                </p>
+
+                            </div>
+
+
+                            <!-- STARS -->
+
+                            <div class="d-flex justify-content-end">
+
+                                @for (int i = 0; i < review.Rating; i++)
+                                {
+                                    <i class="fas fa-star text-secondary"></i>
+                                }
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- REVIEW AUTHOR -->
+
+                        <div class="d-flex">
+
+                            <div class="rounded-circle me-4"
+                                 style="width:100px;height:100px;">
+
+                                @if (!string.IsNullOrEmpty(review.ImageUrl))
+                                {
+                                    <img class="img-fluid rounded-circle"
+                                         src="@review.ImageUrl"
+                                         alt="@review.Name">
+                                }
+                                else
+                                {
+                                    <img class="img-fluid rounded-circle"
+                                         src="~/img/testimonial-1.jpg"
+                                         alt="@review.Name">
+                                }
+
+                            </div>
+
+
+                            <div class="my-auto">
+
+                                <h5>
+                                    @review.Name
+                                </h5>
+
+                                <p class="mb-0">
+                                    @review.Country
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                }
+
+            </div>
 
         </div>
-    </div>
-</div>
 
-<!-- Add Review Button Start -->
-<div class="text-center mt-5 wow fadeInUp" data-wow-delay="0.2s">
+    </div>
+}
+
+
+<!-- =========================================================
+     ADD REVIEW
+     ========================================================= -->
+
+<div class="text-center mt-5 mb-5 wow fadeInUp"
+     data-wow-delay="0.2s">
 
     <a asp-controller="Reviews"
        asp-action="Create"
        class="btn btn-primary border-secondary rounded-pill py-3 px-5">
 
-        Add Your Review
+        ADD YOUR REVIEW
 
     </a>
 
 </div>
-<!-- Add Review Button End -->
+
 <!-- Testimonial End -->
-
-

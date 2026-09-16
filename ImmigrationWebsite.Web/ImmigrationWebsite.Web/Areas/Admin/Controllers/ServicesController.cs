@@ -37,8 +37,10 @@ namespace ImmigrationWebsite.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(
             Service service,
-            IFormFile? image)
+            IFormFile? image,
+            ServiceType? serviceType)
         {
+            ModelState.Remove("Slug");
             if (!ModelState.IsValid)
                 return View(service);
 
@@ -70,6 +72,26 @@ namespace ImmigrationWebsite.Web.Areas.Admin.Controllers
                     "/uploads/services/" + fileName;
             }
 
+            if (serviceType.HasValue)
+            {
+                service.Slug = serviceType.Value switch
+                {
+                    //ServiceType.ApplicationAndStatusSupport => "application-status-support",
+                    //ServiceType.NewcomerAndSettlement => "newcomer-settlement",
+                    //ServiceType.HousingAndRelocation => "housing-relocation",
+                    //ServiceType.EmploymentAndCareer => "employment-career",
+                    ServiceType.TravelVisas => "travel-visas",
+                    //ServiceType.DocumentsAndGovernmentServices => "documents-government-services",
+                    //ServiceType.TaxBenefitsAndFinancialSupport => "tax-benefits-financial-support",
+                    //ServiceType.FamilyAndEverydayLife => "family-everyday-life",
+                    //ServiceType.BusinessAndSelfEmploymentSupport => "business-self-employment-support",
+                    ServiceType.Canada => "canada",
+                    ServiceType.Education => "education",
+                    //ServiceType.Resources => "resources",
+                    _ => service.Slug
+                };
+            }
+
             await _serviceManager.AddAsync(service);
 
             return RedirectToAction(nameof(Index));
@@ -83,15 +105,37 @@ namespace ImmigrationWebsite.Web.Areas.Admin.Controllers
             if (service == null)
                 return NotFound();
 
+            ServiceType? serviceType = service.Slug switch
+            {
+                //"application-status-support" => ServiceType.ApplicationAndStatusSupport,
+                //"newcomer-settlement" => ServiceType.NewcomerAndSettlement,
+                //"housing-relocation" => ServiceType.HousingAndRelocation,
+                //"employment-career" => ServiceType.EmploymentAndCareer,
+                "travel-visas" => ServiceType.TravelVisas,
+                //"documents-government-services" => ServiceType.DocumentsAndGovernmentServices,
+                //"tax-benefits-financial-support" => ServiceType.TaxBenefitsAndFinancialSupport,
+                //"family-everyday-life" => ServiceType.FamilyAndEverydayLife,
+                //"business-self-employment-support" => ServiceType.BusinessAndSelfEmploymentSupport,
+                "canada" => ServiceType.Canada,
+                "education" => ServiceType.Education,
+                //"resources" => ServiceType.Resources,
+                _ => null
+            };
+
+            ViewBag.ServiceType = serviceType;
+
             return View(service);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(
-            Service service,
-            IFormFile? image)
+           Service service,
+           IFormFile? image,
+           ServiceType? serviceType)
         {
+            ModelState.Remove("Slug");
+
             if (!ModelState.IsValid)
                 return View(service);
 
@@ -105,6 +149,27 @@ namespace ImmigrationWebsite.Web.Areas.Admin.Controllers
             existingService.Description = service.Description;
             existingService.IsActive = service.IsActive;
             existingService.DisplayOrder = service.DisplayOrder;
+
+            // Update category and slug
+            if (serviceType.HasValue)
+            {
+                existingService.Slug = serviceType.Value switch
+                {
+                    //ServiceType.ApplicationAndStatusSupport => "application-status-support",
+                    //ServiceType.NewcomerAndSettlement => "newcomer-settlement",
+                    //ServiceType.HousingAndRelocation => "housing-relocation",
+                    //ServiceType.EmploymentAndCareer => "employment-career",
+                    ServiceType.TravelVisas => "travel-visas",
+                    //ServiceType.DocumentsAndGovernmentServices => "documents-government-services",
+                    //ServiceType.TaxBenefitsAndFinancialSupport => "tax-benefits-and-financial-support",
+                    //ServiceType.FamilyAndEverydayLife => "family-everyday-life",
+                    //ServiceType.BusinessAndSelfEmploymentSupport => "business-self-employment-support",
+                    ServiceType.Canada => "canada",
+                    ServiceType.Education => "education",
+                    //ServiceType.Resources => "resources",
+                    _ => existingService.Slug
+                };
+            }
 
             if (image != null && image.Length > 0)
             {

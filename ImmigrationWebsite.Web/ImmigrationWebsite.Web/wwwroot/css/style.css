@@ -1062,3 +1062,1088 @@
         transform: translateY(0);
     }
 }
+
+/* Prevent horizontal page scroll */
+html,
+body {
+    overflow-x: hidden !important;
+    max-width: 100%;
+}
+
+.navbar,
+.navbar-collapse,
+.navbar-nav {
+    max-width: 100%;
+}
+
+
+
+@media (min-width: 1200px) {
+
+    .navbar {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+
+    .navbar-brand {
+        flex-shrink: 0 !important;
+        margin-right: 0 !important;
+    }
+
+        .navbar-brand img {
+            height: 44px !important;
+            max-height: 44px !important;
+        }
+
+        .navbar-brand > div {
+            flex-shrink: 0 !important;
+        }
+
+            .navbar-brand > div span:first-child {
+                font-size: 20px !important;
+            }
+
+            .navbar-brand > div span:last-child {
+                font-size: 11px !important;
+                letter-spacing: 2px !important;
+            }
+
+    .navbar-collapse {
+        min-width: 0 !important;
+        flex-wrap: nowrap !important;
+    }
+
+    .navbar-nav {
+        flex-wrap: nowrap !important;
+        min-width: 0 !important;
+    }
+
+    .navbar-light .navbar-nav .nav-link {
+        margin-right: 8px !important;
+        padding-left: 3px !important;
+        padding-right: 3px !important;
+        font-size: 12px !important;
+        white-space: nowrap !important;
+    }
+
+    .navbar-collapse > .btn {
+        flex-shrink: 0 !important;
+        white-space: nowrap !important;
+        font-size: 12px !important;
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+        min-width: 105px !important;
+        margin-left: 5px !important;
+    }
+
+    /* Global Bridge - Menu Spacing */
+    @media (min-width: 1200px) {
+        .global-menu {
+            margin-left: 180px !important;
+        }
+    }
+}
+/* Services dropdown fix */
+@media (min-width: 1200px) {
+    .navbar .nav-item.dropdown:hover > .dropdown-menu {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        transform: rotateX(0deg) !important;
+    }
+}
+
+.service-card-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
+
+/* =========================================================
+   GLOBAL BRIDGE - NAVY / GOLD / SILVER THEME
+   ========================================================= */
+
+:root {
+    --gb-navy: #14294B;
+    --gb-navy-dark: #0B1B33;
+    --gb-gold: #C8A24A;
+    --gb-gold-light: #D8B968;
+    --gb-silver: #B7BDC6;
+    --gb-ivory: #F5F3EE;
+    --gb-white: #FFFFFF;
+    --gb-text: #263238;
+}
+
+
+/* =========================================================
+   PRIMARY COLORS
+   ========================================================= */
+
+.bg-primary {
+    background-color: var(--gb-navy) !important;
+}
+
+.text-primary {
+    color: var(--gb-navy) !important;
+}
+
+.border-primary {
+    border-color: var(--gb-navy) !important;
+}
+
+
+/* =========================================================
+   SECONDARY / GOLD
+   ========================================================= */
+
+.bg-secondary {
+    background-color: var(--gb-gold) !important;
+}
+
+.text-secondary {
+    color: var(--gb-gold) !important;
+}
+
+.border-secondary {
+    border-color: var(--gb-gold) !important;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.btn.btn-primary {
+    background: var(--gb-gold) !important;
+    border-color: var(--gb-gold) !important;
+    color: var(--gb-navy-dark) !important;
+    font-weight: 600;
+}
+
+    .btn.btn-primary:hover {
+        background: var(--gb-navy) !important;
+        border-color: var(--gb-gold) !important;
+        color: var(--gb-gold) !important;
+    }
+
+.btn.btn-secondary {
+    color: var(--gb-gold) !important;
+}
+
+    .btn.btn-secondary:hover {
+        color: var(--gb-navy) !important;
+    }
+
+
+/* =========================================================
+   TOPBAR
+   ========================================================= */
+
+.container-fluid.bg-primary {
+    background: var(--gb-navy-dark) !important;
+}
+
+    .container-fluid.bg-primary a {
+        color: var(--gb-silver) !important;
+    }
+
+        .container-fluid.bg-primary a:hover {
+            color: var(--gb-gold) !important;
+        }
+
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+.navbar-light .navbar-nav .nav-link {
+    color: var(--gb-navy) !important;
+}
+
+    .navbar-light .navbar-nav .nav-link:hover,
+    .navbar-light .navbar-nav .nav-link.active {
+        color: var(--gb-gold) !important;
+    }
+
+
+/* Elegant gold lines under menu items */
+
+@media (min-width: 991.98px) {
+
+    .navbar-light .navbar-nav .nav-link:after,
+    .navbar-light .navbar-nav .nav-link::before {
+        background: var(--gb-gold) !important;
+    }
+}
+
+
+/* Mobile menu button */
+
+.navbar-light .navbar-toggler {
+    border-color: var(--gb-navy) !important;
+}
+
+    .navbar-light .navbar-toggler .fa-bars {
+        color: var(--gb-navy) !important;
+    }
+
+
+/* =========================================================
+   SERVICES DROPDOWN
+   ========================================================= */
+
+.navbar .dropdown-menu {
+    border-top: 3px solid var(--gb-gold) !important;
+    box-shadow: 0 10px 30px rgba(11, 27, 51, 0.15);
+}
+
+.dropdown .dropdown-menu a:hover {
+    background: var(--gb-navy) !important;
+    color: var(--gb-gold) !important;
+}
+
+
+/* =========================================================
+   HERO / INTERNAL PAGE HEADER
+   ========================================================= */
+
+.bg-breadcrumb {
+    background: linear-gradient( rgba(11, 27, 51, 0.94), rgba(20, 41, 75, 0.88) ), url(../img/breadcrumb.png) !important;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+/* =========================================================
+   SECTION TITLES
+   ========================================================= */
+
+.section-title .sub-style,
+.sub-title {
+    color: var(--gb-gold) !important;
+}
+
+    .section-title .sub-style::before,
+    .sub-title::before {
+        border-color: var(--gb-silver) !important;
+    }
+
+    .section-title .sub-style::after,
+    .sub-title::after {
+        border-color: var(--gb-gold) !important;
+    }
+
+
+/* =========================================================
+   SERVICE CARDS
+   ========================================================= */
+
+.service .service-item .service-inner .service-title .service-content {
+    background: var(--gb-navy) !important;
+}
+
+    .service .service-item .service-inner .service-title .service-content a h4 {
+        border-bottom-color: rgba(200, 162, 74, 0.35) !important;
+    }
+
+    .service .service-item .service-inner .service-title .service-content a:hover {
+        color: var(--gb-gold) !important;
+    }
+
+
+/* =========================================================
+   FEATURES
+   ========================================================= */
+
+.features .feature-item::after {
+    background: rgba(20, 41, 75, 0.08);
+}
+
+.features .feature-item:hover .feature-icon i {
+    color: var(--gb-gold) !important;
+}
+
+
+/* =========================================================
+   COUNTRY CARDS
+   ========================================================= */
+
+.country .country-item::after {
+    background: rgba(20, 41, 75, 0.82) !important;
+}
+
+.country .country-item .country-name a.fs-4:hover {
+    color: var(--gb-gold) !important;
+}
+
+
+/* =========================================================
+   TESTIMONIALS / REVIEWS
+   ========================================================= */
+
+.testimonial .owl-carousel.testimonial-carousel .owl-nav {
+    color: var(--gb-navy) !important;
+}
+
+    .testimonial .owl-carousel.testimonial-carousel .owl-nav .owl-prev:hover,
+    .testimonial .owl-carousel.testimonial-carousel .owl-nav .owl-next:hover {
+        color: var(--gb-gold) !important;
+    }
+
+
+/* =========================================================
+   CONTACT
+   ========================================================= */
+
+.contact .office .office-item:hover {
+    box-shadow: 20px 20px 20px rgba(20, 41, 75, 0.20);
+}
+
+.contact .office .office-item .office-content a.text-muted:hover {
+    color: var(--gb-gold) !important;
+}
+
+.contact .office .office-item .office-content a.text-secondary:hover {
+    color: var(--gb-navy) !important;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.footer {
+    background: linear-gradient( 135deg, var(--gb-navy-dark), var(--gb-navy) ) !important;
+}
+
+    .footer .footer-item a {
+        color: var(--gb-silver) !important;
+    }
+
+        .footer .footer-item a:hover {
+            color: var(--gb-gold) !important;
+        }
+
+    .footer .footer-item h4 {
+        color: var(--gb-gold) !important;
+    }
+
+    .footer .footer-item p {
+        color: var(--gb-silver) !important;
+    }
+
+
+/* =========================================================
+   COPYRIGHT
+   ========================================================= */
+
+.copyright {
+    background: var(--gb-navy-dark) !important;
+    border-top: 1px solid rgba(200, 162, 74, 0.25);
+}
+
+
+/* =========================================================
+   GOLD ACCENTS
+   ========================================================= */
+
+/* Icons */
+
+.footer i,
+.topbar i {
+    color: var(--gb-gold) !important;
+}
+
+
+/* Links */
+
+a {
+    transition: 0.3s ease;
+}
+
+
+    /* =========================================================
+   GOLD HOVER EFFECT
+   ========================================================= */
+
+    a:hover {
+        color: var(--gb-gold);
+    }
+
+
+/* =========================================================
+   GET SUPPORT BUTTON
+   ========================================================= */
+
+.navbar .btn.btn-primary {
+    background: var(--gb-gold) !important;
+    color: var(--gb-navy-dark) !important;
+    border-color: var(--gb-gold) !important;
+    box-shadow: 0 4px 12px rgba(200, 162, 74, 0.20);
+}
+
+    .navbar .btn.btn-primary:hover {
+        background: var(--gb-navy-dark) !important;
+        color: var(--gb-gold) !important;
+        border-color: var(--gb-gold) !important;
+    }
+
+
+/* =========================================================
+   GOLD DIVIDERS
+   ========================================================= */
+
+hr {
+    border-color: rgba(200, 162, 74, 0.30) !important;
+}
+
+
+/* =========================================================
+   SELECTION
+   ========================================================= */
+
+::selection {
+    background: var(--gb-navy);
+    color: var(--gb-gold);
+}
+
+
+/* =========================================================
+   GLOBAL BRIDGE - SERVICE CARDS
+   NAVY / GOLD / SILVER
+   ========================================================= */
+
+/* Card image */
+.service .service-item .service-img {
+    overflow: hidden;
+    border-radius: 8px 8px 0 0;
+}
+
+    .service .service-item .service-img img {
+        transition: transform 0.5s ease;
+    }
+
+.service .service-item:hover .service-img img {
+    transform: scale(1.05);
+}
+
+
+/* Main service title box */
+.service .service-item .service-title-name .bg-primary {
+    background: linear-gradient( 135deg, var(--gb-navy-dark), var(--gb-navy) ) !important;
+    border: 1px solid rgba(200, 162, 74, 0.35);
+    box-shadow: 0 8px 20px rgba(11, 27, 51, 0.15);
+}
+
+
+/* Service title */
+.service .service-item .service-title-name a.h4 {
+    color: var(--gb-white) !important;
+    transition: color 0.3s ease;
+}
+
+.service .service-item:hover .service-title-name a.h4 {
+    color: var(--gb-gold-light) !important;
+}
+
+
+/* Learn More button outside card */
+.service .service-title-name .btn {
+    background: var(--gb-ivory) !important;
+    color: var(--gb-navy) !important;
+    border: 1px solid rgba(200, 162, 74, 0.35);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+    .service .service-title-name .btn:hover {
+        background: var(--gb-gold) !important;
+        color: var(--gb-navy-dark) !important;
+        border-color: var(--gb-gold);
+        transform: translateY(-2px);
+    }
+
+
+/* Service content */
+.service .service-item .service-content {
+    background: linear-gradient( 135deg, var(--gb-navy-dark), var(--gb-navy) ) !important;
+    border-top: 2px solid rgba(200, 162, 74, 0.55);
+}
+
+
+    /* Service content title */
+    .service .service-item .service-content h4 {
+        color: var(--gb-white) !important;
+        border-bottom: 1px solid rgba(200, 162, 74, 0.3);
+    }
+
+        .service .service-item .service-content h4:hover {
+            color: var(--gb-gold-light) !important;
+        }
+
+
+    /* Service description */
+    .service .service-item .service-content p {
+        color: var(--gb-silver) !important;
+        line-height: 1.8;
+    }
+
+
+    /* Learn More button inside content */
+    .service .service-item .service-content .btn {
+        background: var(--gb-gold) !important;
+        color: var(--gb-navy-dark) !important;
+        border: 1px solid var(--gb-gold) !important;
+        font-weight: 600;
+        box-shadow: 0 4px 12px rgba(200, 162, 74, 0.18);
+    }
+
+        .service .service-item .service-content .btn:hover {
+            background: var(--gb-navy-dark) !important;
+            color: var(--gb-gold) !important;
+            border-color: var(--gb-gold) !important;
+            transform: translateY(-2px);
+        }
+
+
+/* Subtle gold accent on card */
+.service .service-item {
+    position: relative;
+}
+
+    .service .service-item::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        width: 0;
+        height: 2px;
+        background: var(--gb-gold);
+        transform: translateX(-50%);
+        transition: width 0.4s ease;
+        z-index: 5;
+    }
+
+    .service .service-item:hover::before {
+        width: 70%;
+    }
+
+
+/* Keep cards elegant and clean */
+.service .service-item {
+    transition: transform 0.3s ease;
+}
+
+    .service .service-item:hover {
+        transform: translateY(-4px);
+    }
+
+
+
+
+
+/* =========================================================
+   GLOBAL BRIDGE - ABOUT SECTION
+   ========================================================= */
+.container-fluid.py-5 .sub-title {
+    color: var(--gb-gold) !important;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+.container-fluid.py-5 h1 {
+    color: var(--gb-navy-dark);
+    font-weight: 700;
+}
+
+.container-fluid.py-5 p {
+    color: var(--gb-text);
+    line-height: 1.8;
+}
+
+
+/* About image */
+.container-fluid.py-5 .bg-light {
+    border: 1px solid rgba(200, 162, 74, 0.18);
+    box-shadow: 0 15px 35px rgba(11, 27, 51, 0.10);
+}
+
+    .container-fluid.py-5 .bg-light img {
+        transition: transform 0.5s ease;
+    }
+
+    .container-fluid.py-5 .bg-light:hover img {
+        transform: scale(1.03);
+    }
+
+
+/* About button */
+.container-fluid.py-5 .btn.btn-primary {
+    background: var(--gb-gold) !important;
+    color: var(--gb-navy-dark) !important;
+    border-color: var(--gb-gold) !important;
+    font-weight: 600;
+}
+
+    .container-fluid.py-5 .btn.btn-primary:hover {
+        background: var(--gb-navy-dark) !important;
+        color: var(--gb-gold) !important;
+    }
+
+
+/* =========================================================
+   WHY GLOBAL BRIDGE
+   ========================================================= */
+
+.features {
+    background: var(--gb-ivory);
+}
+
+
+    /* Feature cards */
+    .features .feature-item {
+        background: var(--gb-white);
+        border: 1px solid rgba(183, 189, 198, 0.35);
+        border-radius: 12px;
+        box-shadow: 0 8px 25px rgba(11, 27, 51, 0.06);
+        transition: all 0.35s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+
+        /* Gold top accent */
+        .features .feature-item::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: var(--gb-gold);
+            transform: translateX(-50%);
+            transition: width 0.35s ease;
+        }
+
+        .features .feature-item:hover::before {
+            width: 70%;
+        }
+
+
+        /* Card hover */
+        .features .feature-item:hover {
+            transform: translateY(-7px);
+            border-color: rgba(200, 162, 74, 0.35);
+            box-shadow: 0 15px 35px rgba(11, 27, 51, 0.12);
+        }
+
+
+    /* Feature icon container */
+    .features .feature-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 95px;
+        height: 95px;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 50%;
+        background: rgba(20, 41, 75, 0.06);
+        border: 1px solid rgba(200, 162, 74, 0.25);
+        transition: all 0.35s ease;
+    }
+
+
+        /* Feature icons */
+        .features .feature-icon i {
+            color: var(--gb-navy) !important;
+            transition: all 0.35s ease;
+        }
+
+    .features .feature-item:hover .feature-icon {
+        background: var(--gb-navy);
+        border-color: var(--gb-gold);
+        transform: translateY(-3px);
+    }
+
+        .features .feature-item:hover .feature-icon i {
+            color: var(--gb-gold) !important;
+        }
+
+
+    /* Feature titles */
+    .features .feature-content h5 {
+        color: var(--gb-navy-dark);
+        font-weight: 700;
+        letter-spacing: 0.4px;
+    }
+
+
+    /* Feature descriptions */
+    .features .feature-content p {
+        color: #66717d;
+        line-height: 1.7;
+    }
+
+
+    /* Section title */
+    .features .section-title .sub-title {
+        color: var(--gb-gold) !important;
+    }
+
+    .features .section-title h1 {
+        color: var(--gb-navy-dark);
+    }
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 767.98px) {
+
+    .features .feature-item {
+        padding: 30px 20px !important;
+    }
+
+    .features .feature-icon {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+
+/* =========================================================
+   GLOBAL BRIDGE - REVIEWS
+   ========================================================= */
+.testimonial {
+    background: var(--gb-white);
+}
+
+
+/* Section title */
+
+.testimonial .section-title .sub-title {
+    color: var(--gb-gold) !important;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+.testimonial .section-title h1 {
+    color: var(--gb-navy-dark);
+    font-weight: 700;
+}
+
+.testimonial .section-title p {
+    color: #66717d;
+    line-height: 1.8;
+}
+
+
+/* Review card */
+
+.testimonial .testimonial-item {
+    padding: 10px;
+}
+
+.testimonial .testimonial-content {
+    position: relative;
+    background: var(--gb-ivory) !important;
+    border: 1px solid rgba(200, 162, 74, 0.25);
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(11, 27, 51, 0.07);
+    transition: all 0.35s ease;
+}
+
+
+    /* Small gold accent */
+
+    .testimonial .testimonial-content::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 30px;
+        width: 55px;
+        height: 3px;
+        background: var(--gb-gold);
+        border-radius: 0 0 4px 4px;
+    }
+
+
+    /* Review text */
+
+    .testimonial .testimonial-content p {
+        color: var(--gb-text);
+        line-height: 1.8;
+    }
+
+
+    /* Stars */
+
+    .testimonial .testimonial-content .fa-star {
+        color: var(--gb-gold) !important;
+        margin-left: 3px;
+        font-size: 0.95rem;
+    }
+
+
+/* Author image */
+
+.testimonial .testimonial-item .rounded-circle {
+    border: 3px solid rgba(200, 162, 74, 0.35);
+    overflow: hidden;
+}
+
+    .testimonial .testimonial-item .rounded-circle img {
+        transition: transform 0.4s ease;
+    }
+
+.testimonial .testimonial-item:hover .rounded-circle img {
+    transform: scale(1.05);
+}
+
+
+/* Author name */
+
+.testimonial .testimonial-item h5 {
+    color: var(--gb-navy-dark);
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+
+/* Country */
+
+.testimonial .testimonial-item .my-auto p {
+    color: #7b858f;
+}
+
+
+/* Card hover */
+
+.testimonial .testimonial-item:hover .testimonial-content {
+    transform: translateY(-4px);
+    border-color: rgba(200, 162, 74, 0.45);
+    box-shadow: 0 15px 35px rgba(11, 27, 51, 0.11);
+}
+
+
+/* =========================================================
+   REVIEW CAROUSEL NAVIGATION
+   ========================================================= */
+
+.testimonial .owl-carousel .owl-nav {
+    margin-top: 20px;
+}
+
+    .testimonial .owl-carousel .owl-nav button {
+        color: var(--gb-navy) !important;
+        transition: all 0.3s ease;
+    }
+
+        .testimonial .owl-carousel .owl-nav button:hover {
+            color: var(--gb-gold) !important;
+        }
+
+
+/* =========================================================
+   ADD YOUR REVIEW BUTTON
+   ========================================================= */
+
+.testimonial + .text-center .btn.btn-primary {
+    background: var(--gb-gold) !important;
+    color: var(--gb-navy-dark) !important;
+    border: 1px solid var(--gb-gold) !important;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    box-shadow: 0 6px 18px rgba(200, 162, 74, 0.20);
+    transition: all 0.3s ease;
+}
+
+    .testimonial + .text-center .btn.btn-primary:hover {
+        background: var(--gb-navy-dark) !important;
+        color: var(--gb-gold) !important;
+        border-color: var(--gb-gold) !important;
+        transform: translateY(-2px);
+    }
+
+
+/* =========================================================
+   REVIEW TEXT SCROLLBAR
+   ========================================================= */
+
+.testimonial-content div[style*="overflow-y"] {
+    scrollbar-width: thin;
+    scrollbar-color: var(--gb-gold-light) transparent;
+}
+
+    .testimonial-content div[style*="overflow-y"]::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    .testimonial-content div[style*="overflow-y"]::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .testimonial-content div[style*="overflow-y"]::-webkit-scrollbar-thumb {
+        background: var(--gb-gold-light);
+        border-radius: 10px;
+    }
+
+
+
+/* =========================================================
+   GLOBAL BRIDGE - FOOTER
+   ========================================================= */
+
+.footer {
+    background: linear-gradient( 135deg, var(--gb-navy-dark), var(--gb-navy) ) !important;
+    color: var(--gb-silver);
+    position: relative;
+}
+
+
+    /* Gold line at top */
+
+    .footer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 8%;
+        right: 8%;
+        height: 1px;
+        background: linear-gradient( 90deg, transparent, var(--gb-gold), transparent );
+    }
+
+
+    /* Footer headings */
+
+    .footer .footer-item h4 {
+        color: var(--gb-gold) !important;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 25px;
+        position: relative;
+    }
+
+
+        /* Small gold line under headings */
+
+        .footer .footer-item h4::after {
+            content: "";
+            display: block;
+            width: 35px;
+            height: 2px;
+            background: var(--gb-gold);
+            margin-top: 10px;
+        }
+
+
+    /* Footer description */
+
+    .footer .footer-item p {
+        color: var(--gb-silver) !important;
+        line-height: 1.8;
+    }
+
+
+    /* Footer links */
+
+    .footer .footer-item a {
+        color: var(--gb-silver) !important;
+        transition: all 0.3s ease;
+    }
+
+        .footer .footer-item a:hover {
+            color: var(--gb-gold) !important;
+            padding-left: 4px;
+        }
+
+
+    /* Footer icons */
+
+    .footer .footer-item i {
+        color: var(--gb-gold) !important;
+        transition: all 0.3s ease;
+    }
+
+    .footer .footer-item a:hover i {
+        color: var(--gb-gold-light) !important;
+    }
+
+
+    /* Social icons */
+
+    .footer .btn.btn-link {
+        color: var(--gb-silver) !important;
+    }
+
+        .footer .btn.btn-link:hover {
+            color: var(--gb-gold) !important;
+        }
+
+
+    /* Contact links */
+
+    .footer .footer-item .text-secondary {
+        color: var(--gb-gold) !important;
+    }
+
+        .footer .footer-item .text-secondary:hover {
+            color: var(--gb-white) !important;
+        }
+
+
+/* Copyright */
+
+.copyright {
+    background: var(--gb-navy-dark) !important;
+    border-top: 1px solid rgba(200, 162, 74, 0.25);
+    color: var(--gb-silver);
+}
+
+
+    /* Copyright links */
+
+    .copyright a {
+        color: var(--gb-gold-light) !important;
+        transition: all 0.3s ease;
+    }
+
+        .copyright a:hover {
+            color: var(--gb-white) !important;
+        }
+
+
+/* Footer logo / brand */
+
+.footer .footer-item .navbar-brand {
+    color: var(--gb-white) !important;
+}
+
+    .footer .footer-item .navbar-brand span {
+        color: var(--gb-gold) !important;
+    }
+
+
+/* Mobile */
+
+@media (max-width: 767.98px) {
+
+    .footer .footer-item {
+        margin-bottom: 30px;
+    }
+
+        .footer .footer-item h4 {
+            margin-bottom: 18px;
+        }
+
+    .footer::before {
+        left: 5%;
+        right: 5%;
+    }
+}
+

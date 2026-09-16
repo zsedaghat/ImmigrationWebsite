@@ -4,25 +4,36 @@
     ViewData["Title"] = Model.Title;
 }
 
-<!-- Page Header Start -->
-<div class="container-fluid bg-breadcrumb">
+<!-- =========================================================
+     PAGE HEADER START
+     ========================================================= -->
 
-    <div class="container text-center py-5"
-         style="max-width: 900px;">
+<div class="container-fluid page-header py-5"
+     style="background: linear-gradient(rgba(0, 0, 0, .55), rgba(0, 0, 0, .55)), url('/img/blogpostPic.jpg') center center / cover no-repeat;">
 
-        <h4 class="text-white display-4 mb-4 wow fadeInDown"
-            data-wow-delay="0.1s">
 
-            Blog Details
+    <div class="container py-5">
 
-        </h4>
+        <h1 class="display-3 text-white mb-3 internal-page-title">
+            Resources
+        </h1>
+
+        <p class="text-white mb-0 internal-page-subtitle">
+            Helpful information, practical guides and useful resources.
+        </p>
 
     </div>
 
+
 </div>
+
 <!-- Page Header End -->
-<!-- Blog Details Start -->
+<!-- =========================================================
+     ARTICLE DETAILS START
+     ========================================================= -->
+
 <div class="container-fluid py-5">
+
 
     <div class="container py-5">
 
@@ -31,7 +42,9 @@
             <div class="col-lg-9">
 
 
-                <!-- Image -->
+                <!-- =================================================
+                     ARTICLE IMAGE
+                     ================================================= -->
                 @if (!string.IsNullOrEmpty(Model.ImageUrl))
                 {
                     <div class="mb-4 wow fadeInDown"
@@ -45,7 +58,10 @@
                 }
 
 
-                <!-- Date -->
+                <!-- =================================================
+                     ARTICLE META
+                     ================================================= -->
+
                 <div class="mb-3 wow fadeInDown"
                      data-wow-delay="0.3s">
 
@@ -60,7 +76,10 @@
                 </div>
 
 
-                <!-- Title -->
+                <!-- =================================================
+                     ARTICLE TITLE
+                     ================================================= -->
+
                 <h1 class="display-5 mb-4 wow fadeInDown"
                     data-wow-delay="0.4s">
 
@@ -69,7 +88,9 @@
                 </h1>
 
 
-                <!-- Summary -->
+                <!-- =================================================
+                     ARTICLE SUMMARY
+                     ================================================= -->
                 @if (!string.IsNullOrEmpty(Model.Summary))
                 {
                     <p class="lead mb-4 wow fadeInDown"
@@ -81,7 +102,10 @@
                 }
 
 
-                <!-- Content -->
+                <!-- =================================================
+                     ARTICLE CONTENT
+                     ================================================= -->
+
                 <div class="blog-details-content wow fadeInDown"
                      data-wow-delay="0.6s">
 
@@ -90,17 +114,20 @@
                 </div>
 
 
-                <!-- Back Button -->
+                <!-- =================================================
+                     BACK TO RESOURCES
+                     ================================================= -->
+
                 <div class="mt-5 wow fadeInDown"
                      data-wow-delay="0.7s">
 
                     <a asp-controller="Blog"
                        asp-action="Index"
-                       class="btn btn-primary rounded-pill py-3 px-5">
+                       class="btn btn-primary border-secondary rounded-pill py-3 px-5">
 
                         <i class="fas fa-arrow-left me-2"></i>
 
-                        Back to Blog
+                        BACK TO RESOURCES
 
                     </a>
 
@@ -112,6 +139,8 @@
         </div>
 
     </div>
+    
 
 </div>
-<!-- Blog Details End -->
+
+<!-- Article Details End -->

@@ -1,0 +1,26 @@
+﻿@model IEnumerable<ImmigrationWebsite.Web.Models.Service>
+
+<a asp-controller="Services"
+   asp-action="Index"
+   class="dropdown-item">
+    All Services
+</a>
+
+@{
+    var excludedSlugs = new[]
+    {
+        "canada",
+        "travel-visas",
+        "education",
+        "resources"
+    };
+}
+
+@foreach (var service in Model.Where(x =>
+    x.Slug == null || !excludedSlugs.Contains(x.Slug)))
+{
+    <a href="/services/@service.Id"
+       class="dropdown-item">
+        @service.Title
+    </a>
+}

@@ -45,6 +45,22 @@
 
                     </div>
 
+                   
+                    <div class="mb-3">
+                        <label class="form-label">Service Category</label>
+
+                        <select id="serviceType"
+                                name="serviceType"
+                                class="form-select">
+                            <option value="">-- Select Category --</option>
+                            @foreach (var type in Enum.GetValues<ServiceType>())
+                            {
+                                <option value="@type">@type</option>
+                            }
+                        </select>
+                    </div>
+
+                    <input type="hidden" asp-for="Slug" id="slug" />
 
                     <!-- Description -->
 

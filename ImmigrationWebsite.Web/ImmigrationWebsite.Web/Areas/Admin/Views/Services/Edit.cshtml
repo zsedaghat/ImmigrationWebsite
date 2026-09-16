@@ -47,6 +47,35 @@
 
                     </div>
 
+                    <!-- Service Category -->
+
+                    <div class="mb-3">
+                        <label class="form-label">Service Category</label>
+
+                        <select id="serviceType"
+                                name="serviceType"
+                                class="form-select">
+
+                            <option value="">-- Select Category --</option>
+
+                            @foreach (var type in Enum.GetValues<ServiceType>())
+                            {
+                                if (ViewBag.ServiceType == type)
+                                {
+                                    <option value="@type" selected>
+                                        @type
+                                    </option>
+                                }
+                                else
+                                {
+                                    <option value="@type">
+                                        @type
+                                    </option>
+                                }
+                            }
+
+                        </select>
+                    </div>
 
                     <!-- Description -->
 

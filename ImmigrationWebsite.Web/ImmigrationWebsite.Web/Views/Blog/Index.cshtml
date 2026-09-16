@@ -1,51 +1,68 @@
 ﻿@model ImmigrationWebsite.Web.Models.Pagination.PagedResult<ImmigrationWebsite.Web.Models.BlogPost>
 
 @{
-    ViewData["Title"] = "Blog";
+    ViewData["Title"] = "Resources";
 }
 
-<!-- Page Header Start -->
+<!-- =========================================================
+     PAGE HEADER START
+     ========================================================= -->
+
 <div class="container-fluid page-header py-5"
-     style="background: linear-gradient(rgba(0, 0, 0, .55), rgba(0, 0, 0, .55)), url('/img/office-3.jpg') center center / cover no-repeat;">
+     style="background: linear-gradient(rgba(0, 0, 0, .55), rgba(0, 0, 0, .55)), url('/img/blogpostindex.jpeg') center center / cover no-repeat;">
 
     <div class="container py-5">
 
         <h1 class="display-3 text-white mb-3 internal-page-title">
-            Immigration Blog
+            Resources
         </h1>
 
         <p class="text-white mb-0 internal-page-subtitle">
-            Latest immigration news, visa guides and useful information.
+            Helpful information, practical guides and useful resources.
         </p>
 
     </div>
 
 </div>
+
 <!-- Page Header End -->
-<!-- Blog Start -->
+<!-- =========================================================
+     RESOURCES / ARTICLES START
+     ========================================================= -->
+
 <div class="container-fluid blog py-5">
+
     <div class="container py-5">
+
+
+        <!-- SECTION TITLE -->
 
         <div class="section-title text-center mb-5 wow fadeInUp"
              data-wow-delay="0.1s">
 
             <div class="sub-style">
+
                 <h5 class="sub-title text-primary px-3">
-                    OUR BLOG
+                    RESOURCES
                 </h5>
+
             </div>
 
+
             <h1 class="display-5 mb-4">
-                Latest Immigration Articles
+                Helpful Information & Articles
             </h1>
 
+
             <p class="mb-0">
-                Explore our latest immigration news, visa guides
-                and helpful information.
+                Explore practical information, helpful guides and useful resources
+                to help you better understand important processes and everyday needs.
             </p>
 
         </div>
 
+
+        <!-- ARTICLES -->
 
         <div class="row g-4">
 
@@ -54,9 +71,11 @@
                 <div class="col-lg-6 col-xl-4 wow fadeInUp"
                      data-wow-delay="0.1s">
 
-                    <div class="blog-item">
+                    <div class="blog-item h-100">
 
-                        <!-- Image -->
+
+                        <!-- ARTICLE IMAGE -->
+
                         <div class="blog-img">
 
                             @if (!string.IsNullOrEmpty(post.ImageUrl))
@@ -75,24 +94,34 @@
                         </div>
 
 
-                        <!-- Content -->
-                        <div class="blog-content p-4">
+                        <!-- ARTICLE CONTENT -->
+
+                        <div class="blog-content p-4 d-flex flex-column">
+
+
+                            <!-- DATE -->
 
                             <div class="d-flex justify-content-between mb-3">
 
                                 <small class="text-primary">
+
                                     <i class="fas fa-calendar-alt me-2"></i>
+
                                     @post.PublishedAt.ToString("MMM dd, yyyy")
+
                                 </small>
 
                             </div>
 
+
+                            <!-- TITLE -->
 
                             <h4 class="mb-3">
                                 @post.Title
                             </h4>
 
 
+                            <!-- SUMMARY -->
                             @if (!string.IsNullOrEmpty(post.Summary))
                             {
                                 <p class="mb-4">
@@ -101,15 +130,22 @@
                             }
 
 
-                            <a asp-controller="Blog"
-                               asp-action="Details"
-                               asp-route-id="@post.Id"
-                               class="btn btn-primary rounded-pill py-2 px-4">
+                            <!-- READ MORE -->
 
-                                Read More
-                                <i class="fas fa-arrow-right ms-2"></i>
+                            <div class="mt-auto">
 
-                            </a>
+                                <a asp-controller="Blog"
+                                   asp-action="Details"
+                                   asp-route-id="@post.Id"
+                                   class="btn btn-primary rounded-pill py-2 px-4">
+
+                                    READ MORE
+
+                                    <i class="fas fa-arrow-right ms-2"></i>
+
+                                </a>
+
+                            </div>
 
                         </div>
 
@@ -121,13 +157,17 @@
         </div>
 
 
-        <!-- Pagination -->
+        <!-- =================================================
+             PAGINATION
+             ================================================= -->
         @if (Model.TotalPages > 1)
         {
             <div class="col-12 mt-5">
 
-                <nav>
+                <nav aria-label="Resources pagination">
+
                     <ul class="pagination justify-content-center">
+
 
                         @if (Model.HasPreviousPage)
                         {
@@ -180,11 +220,15 @@
                         }
 
                     </ul>
+
                 </nav>
 
             </div>
         }
 
     </div>
+
+
 </div>
-<!-- Blog End -->
+
+<!-- Resources / Articles End -->

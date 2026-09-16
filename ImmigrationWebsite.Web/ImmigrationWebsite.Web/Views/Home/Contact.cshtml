@@ -4,33 +4,48 @@
     ViewData["Title"] = "Contact Us";
 }
 
-<!-- Page Header Start -->
+<!-- Contact Hero Start -->
 <div class="container-fluid page-header py-5"
-     style="background: linear-gradient(rgba(0, 0, 0, .55), rgba(0, 0, 0, .55)), url('/img/office-3.jpg') center center / cover no-repeat;">
+     style="background: linear-gradient(rgba(11, 27, 51, .78), rgba(20, 41, 75, .78)), url('/img/aboutUs.jpeg') center center / cover no-repeat;">
 
     <div class="container py-5">
 
-        <h1 class="display-3 text-white mb-3 internal-page-title">
-            Contact Us
-        </h1>
+        <div class="row align-items-center">
 
-        <p class="text-white mb-0 internal-page-subtitle">
-            Get in touch with us and take the first step toward your immigration journey.
-        </p>
+            <div class="col-lg-8">
+
+                <div class="sub-style mb-3">
+                    <h5 class="sub-title px-3 text-white">
+                        CONTACT US
+                    </h5>
+                </div>
+
+                <h1 class="display-3 text-white mb-3 internal-page-title">
+                    Let's Start a Conversation
+                </h1>
+
+                <p class="text-white fs-5 mb-0 internal-page-subtitle">
+                    Tell us what you need help with. We're here to provide
+                    practical support and help you take your next step.
+                </p>
+
+            </div>
+
+        </div>
 
     </div>
 
 </div>
-<!-- Page Header End -->
+<!-- Contact Hero End -->
 <!-- Contact Start -->
-<div class="container-fluid py-5">
+<div class="container-fluid py-5 contact-page">
 
     <div class="container py-5">
 
         <!-- Success Message -->
         @if (TempData["SuccessMessage"] != null)
         {
-            <div class="alert alert-success alert-dismissible fade show mb-5"
+            <div class="alert alert-success alert-dismissible fade show mb-5 shadow-sm"
                  role="alert">
 
                 <i class="fa fa-check-circle me-2"></i>
@@ -47,158 +62,131 @@
         }
 
 
-        <!-- Title -->
-        <div class="text-center mx-auto mb-5"
-             style="max-width: 700px;">
+        <!-- Section Heading -->
+        <div class="section-title text-center mx-auto mb-5"
+             style="max-width: 750px;">
 
-            <h5 class="text-primary text-uppercase">
-                Contact Us
-            </h5>
+            <div class="sub-style">
+                <h5 class="sub-title px-3">
+                    GET IN TOUCH
+                </h5>
+            </div>
 
             <h1 class="display-5 mb-3">
-                We Are Here To Help You
+                How Can We Help?
             </h1>
 
             <p class="mb-0">
-                Have questions about immigration?
-                Get in touch with our team and request a consultation.
+                Whether you have a question, need support with a service,
+                or simply want to understand your options, we're here to help.
             </p>
 
         </div>
 
 
-        <div class="row g-5">
+        <div class="row g-5 align-items-stretch">
 
-            <!-- Contact Information -->
+            <!-- LEFT SIDE -->
             <div class="col-lg-5">
 
-                <h3 class="mb-4">
-                    Get In Touch
-                </h3>
+                <div class="contact-info-card h-100">
 
+                    <div class="mb-4">
 
-                <!-- Address -->
-                <div class="d-flex mb-4">
+                        <span class="contact-label">
+                            GLOBAL BRIDGE
+                        </span>
 
-                    <div class="flex-shrink-0 btn-lg-square bg-primary text-white">
-                        <i class="fa fa-map-marker-alt"></i>
-                    </div>
+                        <h2 class="mt-2 mb-3">
+                            Support When You Need It
+                        </h2>
 
-                    <div class="ms-3">
-
-                        <h5>
-                            Our Office
-                        </h5>
-
-                        <p class="mb-0">
-                            Your Office Address
+                        <p>
+                            Global Bridge Support Services provides practical
+                            administrative and support services for individuals,
+                            newcomers, students, families and businesses in Canada
+                            and internationally.
                         </p>
 
                     </div>
 
-                </div>
 
+                    <!-- Email -->
+                    <div class="contact-info-item">
 
-                <!-- Phone -->
-                <div class="d-flex mb-4">
+                        <div class="contact-icon">
+                            <i class="fa fa-envelope"></i>
+                        </div>
 
-                    <div class="flex-shrink-0 btn-lg-square bg-primary text-white">
-                        <i class="fa fa-phone-alt"></i>
+                        <div>
+                            <span>Email Us</span>
+
+                            <a href="mailto:info@globalbridgesupport.com">
+                                info@globalbridgesupport.com
+                            </a>
+                        </div>
+
                     </div>
 
-                    <div class="ms-3">
 
-                        <h5>
-                            Call Us
+                    <!-- Website -->
+                    <div class="contact-info-item">
+
+                        <div class="contact-icon">
+                            <i class="fa fa-globe"></i>
+                        </div>
+
+                        <div>
+                            <span>Website</span>
+
+                            <a href="https://globalbridgesupport.com"
+                               target="_blank"
+                               rel="noopener noreferrer">
+                                globalbridgesupport.com
+                            </a>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Support -->
+                    <div class="contact-info-item">
+
+                        <div class="contact-icon">
+                            <i class="fa fa-comments"></i>
+                        </div>
+
+                        <div>
+                            <span>Need Support?</span>
+
+                            <p class="mb-0">
+                                Complete the form and tell us what you need.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Social Media -->
+                    <div class="contact-social mt-5">
+
+                        <h5 class="mb-3">
+                            Connect With Us
                         </h5>
 
-                        <p class="mb-0">
-                            +00 123 456 789
-                        </p>
+                        <div class="d-flex gap-2">
 
-                    </div>
+                            <!-- Instagram -->
+                            <a href="https://www.instagram.com/globalbridge_sup/"
+                               class="btn btn-primary btn-square"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               aria-label="Instagram">
 
-                </div>
+                                <i class="fab fa-instagram"></i>
 
-
-                <!-- Email -->
-                <div class="d-flex mb-4">
-
-                    <div class="flex-shrink-0 btn-lg-square bg-primary text-white">
-                        <i class="fa fa-envelope"></i>
-                    </div>
-
-                    <div class="ms-3">
-
-                        <h5>
-                            Email Us
-                        </h5>
-
-                        <p class="mb-0">
-                            info@example.com
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <!-- Working Hours -->
-                <div class="d-flex mb-4">
-
-                    <div class="flex-shrink-0 btn-lg-square bg-primary text-white">
-                        <i class="fa fa-clock"></i>
-                    </div>
-
-                    <div class="ms-3">
-
-                        <h5>
-                            Working Hours
-                        </h5>
-
-                        <p class="mb-0">
-                            Monday - Friday
-                            <br />
-                            9:00 AM - 6:00 PM
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <!-- Social Media -->
-                <div class="mt-5">
-
-                    <h5 class="mb-3">
-                        Follow Us
-                    </h5>
-
-                    <div class="d-flex">
-
-                        <a class="btn btn-primary btn-square me-2"
-                           href="#"
-                           aria-label="Facebook">
-
-                            <i class="fab fa-facebook-f"></i>
-
-                        </a>
-
-                        <a class="btn btn-primary btn-square me-2"
-                           href="#"
-                           aria-label="Instagram">
-
-                            <i class="fab fa-instagram"></i>
-
-                        </a>
-
-                        <a class="btn btn-primary btn-square me-2"
-                           href="#"
-                           aria-label="LinkedIn">
-
-                            <i class="fab fa-linkedin-in"></i>
-
-                        </a>
+                            </a>
+                        </div>
 
                     </div>
 
@@ -207,19 +195,24 @@
             </div>
 
 
-            <!-- Consultation Form -->
+            <!-- RIGHT SIDE - FORM -->
             <div class="col-lg-7">
 
-                <div class="bg-light p-4 p-md-5">
+                <div class="contact-form-wrapper h-100">
 
                     <div class="mb-4">
 
-                        <h3 class="mb-2">
-                            Request a Consultation
-                        </h3>
+                        <span class="contact-label">
+                            REQUEST SUPPORT
+                        </span>
 
-                        <p class="mb-0 text-muted">
-                            Fill out the form below and our team will contact you.
+                        <h2 class="mt-2 mb-2">
+                            Tell Us How We Can Help
+                        </h2>
+
+                        <p>
+                            Please complete the form below and provide a few
+                            details so we can better understand how to support you.
                         </p>
 
                     </div>
@@ -284,12 +277,12 @@
 
                                 <label asp-for="Phone"
                                        class="form-label">
-                                    Phone Number
+                                    Phone / WhatsApp
                                 </label>
 
                                 <input asp-for="Phone"
                                        class="form-control"
-                                       placeholder="Your Phone Number" />
+                                       placeholder="Your Phone or WhatsApp Number" />
 
                                 <span asp-validation-for="Phone"
                                       class="text-danger">
@@ -303,12 +296,12 @@
 
                                 <label asp-for="Country"
                                        class="form-label">
-                                    Destination Country
+                                    Current Country
                                 </label>
 
                                 <input asp-for="Country"
                                        class="form-control"
-                                       placeholder="e.g. Canada, Germany, Australia" />
+                                       placeholder="Where are you currently located?" />
 
                                 <span asp-validation-for="Country"
                                       class="text-danger">
@@ -322,12 +315,12 @@
 
                                 <label asp-for="Service"
                                        class="form-label">
-                                    Service
+                                    Service Needed
                                 </label>
 
                                 <input asp-for="Service"
                                        class="form-control"
-                                       placeholder="e.g. Study Visa, Work Visa, Immigration Consulting" />
+                                       placeholder="What service do you need help with?" />
 
                                 <span asp-validation-for="Service"
                                       class="text-danger">
@@ -346,8 +339,8 @@
 
                                 <textarea asp-for="Message"
                                           class="form-control"
-                                          rows="6"
-                                          placeholder="Tell us about your immigration plans..."></textarea>
+                                          rows="5"
+                                          placeholder="Tell us how we can help..."></textarea>
 
                                 <span asp-validation-for="Message"
                                       class="text-danger">
@@ -356,15 +349,15 @@
                             </div>
 
 
-                            <!-- Submit Button -->
-                            <div class="col-12">
+                            <!-- Submit -->
+                            <div class="col-12 pt-2">
 
                                 <button type="submit"
                                         class="btn btn-primary w-100 py-3">
 
                                     <i class="fa fa-paper-plane me-2"></i>
 
-                                    Submit Consultation Request
+                                    SEND REQUEST
 
                                 </button>
 
@@ -391,5 +384,3 @@
     }
 
 }
-
-

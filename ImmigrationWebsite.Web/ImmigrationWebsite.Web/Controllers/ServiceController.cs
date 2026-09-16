@@ -19,13 +19,30 @@ public class ServicesController : Controller
         return View(result);
     }
 
-    public async Task<IActionResult> Details(int id)
+    // Serviceهای اصلی با Id
+    [HttpGet("/services/{id:int}")]
+    public async Task<IActionResult> DetailsById(int id)
     {
         var service = await _serviceManager.GetByIdAsync(id);
 
         if (service == null || !service.IsActive)
             return NotFound();
 
-        return View(service);
+        return View("Details", service);
+    }
+
+    // فقط Canada / Travel Visas / Education / Resources با Slug
+    [HttpGet("/services/{slug}")]
+    public async Task<IActionResult> DetailsBySlug(string slug)
+    {
+        if (string.IsNullOrWhiteSpace(slug))
+            return NotFound();
+
+        var service = await _serviceManager.GetBySlugAsync(slug);
+
+        if (service == null || !service.IsActive)
+            return NotFound();
+
+        return View("Details", service);
     }
 }
