@@ -205,33 +205,7 @@ The application has been deployed to a production hosting environment and is pub
 
 ---
 
-## 📸 Screenshots
 
-### Home Page
-
-*Add screenshot here*
-
-### Services
-
-*Add screenshot here*
-
-### Service Details
-
-*Add screenshot here*
-
-### Admin Dashboard
-
-*Add screenshot here*
-
-### Content Management
-
-*Add screenshot here*
-
-### Reviews Management
-
-*Add screenshot here*
-
----
 
 ## 📁 Project Structure
 
